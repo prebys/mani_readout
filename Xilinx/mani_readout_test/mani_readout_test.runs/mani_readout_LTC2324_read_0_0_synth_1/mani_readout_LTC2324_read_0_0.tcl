@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.tcl"
+  variable script "G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.tcl"
   variable category "vivado_synth"
 }
 
@@ -73,26 +73,26 @@ OPTRACE "mani_readout_LTC2324_read_0_0_synth_1" START { ROLLUP_AUTO }
 set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
-set_param ips.modRefOverrideMrefDirPath c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mref
+set_param ips.modRefOverrideMrefDirPath {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mref}}
 create_project -in_memory -part xc7z020clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/prebys/Xilinx/mani_readout/mani_readout.cache/wt [current_project]
-set_property parent.project_path C:/Users/prebys/Xilinx/mani_readout/mani_readout.xpr [current_project]
+set_property webtalk.parent_dir {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.cache/wt} [current_project]
+set_property parent.project_path {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.xpr} [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
 update_ip_catalog
-set_property ip_output_repo c:/Users/prebys/Xilinx/mani_readout/mani_readout.cache/ip [current_project]
+set_property ip_output_repo {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib C:/Users/prebys/Xilinx/mani_readout/mani_readout.srcs/sources_1/new/LTC2324_read.v
-read_ip -quiet c:/Users/prebys/Xilinx/mani_readout/mani_readout.srcs/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0.xci
+read_verilog -library xil_defaultlib {{G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/sources_1/new/LTC2324_read.v}}
+read_ip -quiet {{G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0.xci}}
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -106,7 +106,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 set_param ips.enableIPCacheLiteLoad 1
 OPTRACE "Configure IP Cache" START { }
 
-set cacheID [config_ip_cache -export -no_bom  -dir C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1 -new_name mani_readout_LTC2324_read_0_0 -ip [get_ips mani_readout_LTC2324_read_0_0]]
+set cacheID [config_ip_cache -export -no_bom  -dir {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1} -new_name mani_readout_LTC2324_read_0_0 -ip [get_ips mani_readout_LTC2324_read_0_0]]
 
 OPTRACE "Configure IP Cache" END { }
 if { $cacheID == "" } {
@@ -161,32 +161,32 @@ create_report "mani_readout_LTC2324_read_0_0_synth_1_synth_report_utilization_0"
 OPTRACE "synth reports" END { }
 
 if { [catch {
-  file copy -force C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.dcp c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0.dcp
+  file copy -force {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.dcp} {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0.dcp}
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v
+  write_verilog -force -mode synth_stub {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl
+  write_vhdl -force -mode synth_stub {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.v
+  write_verilog -force -mode funcsim {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -196,32 +196,32 @@ if { [catch {
 
 
 if { [catch {
-  file copy -force C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.dcp c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0.dcp
+  file copy -force {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.dcp} {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0.dcp}
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  file rename -force C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_stub.v c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v
+  file rename -force {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_stub.v} {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_stub.vhdl c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl
+  file rename -force {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_stub.vhdl} {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_sim_netlist.v c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.v
+  file rename -force {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_sim_netlist.v} {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl
+  file rename -force {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl} {g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -229,15 +229,15 @@ if { [catch {
 close [open .end.used_ip_cache.rst w]
 }; # end if cacheID 
 
-if {[file isdir C:/Users/prebys/Xilinx/mani_readout/mani_readout.ip_user_files/ip/mani_readout_LTC2324_read_0_0]} {
+if {[file isdir {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.ip_user_files/ip/mani_readout_LTC2324_read_0_0}]} {
   catch { 
-    file copy -force c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v C:/Users/prebys/Xilinx/mani_readout/mani_readout.ip_user_files/ip/mani_readout_LTC2324_read_0_0
+    file copy -force {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v}} {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.ip_user_files/ip/mani_readout_LTC2324_read_0_0}
   }
 }
 
-if {[file isdir C:/Users/prebys/Xilinx/mani_readout/mani_readout.ip_user_files/ip/mani_readout_LTC2324_read_0_0]} {
+if {[file isdir {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.ip_user_files/ip/mani_readout_LTC2324_read_0_0}]} {
   catch { 
-    file copy -force c:/Users/prebys/Xilinx/mani_readout/mani_readout.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl C:/Users/prebys/Xilinx/mani_readout/mani_readout.ip_user_files/ip/mani_readout_LTC2324_read_0_0
+    file copy -force {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl}} {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.ip_user_files/ip/mani_readout_LTC2324_read_0_0}
   }
 }
 file delete __synthesis_is_running__

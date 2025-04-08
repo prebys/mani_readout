@@ -2,8 +2,8 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Tue Apr  8 12:36:07 2025
-//Host        : ERICPREBYS41E4 running 64-bit major release  (build 9200)
+//Date        : Tue Apr  8 16:17:33 2025
+//Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 //Command     : generate_target mani_readout_wrapper.bd
 //Design      : mani_readout_wrapper
 //Purpose     : IP block netlist

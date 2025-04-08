@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/prebys/Xilinx/mani_readout/mani_readout.runs/mani_readout_LTC2324_read_0_0_synth_1'
+HD_PWD='G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

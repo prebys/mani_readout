@@ -52,11 +52,12 @@
 
 (* X_CORE_INFO = "LTC2324_read,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "mani_readout_LTC2324_read_0_0,LTC2324_read,{}" *)
-(* CORE_GENERATION_INFO = "mani_readout_LTC2324_read_0_0,LTC2324_read,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=LTC2324_read,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CNV_DELAY=5,LENGTH=16}" *)
+(* CORE_GENERATION_INFO = "mani_readout_LTC2324_read_0_0,LTC2324_read,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=LTC2324_read,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,LENGTH=16}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mani_readout_LTC2324_read_0_0 (
   clk,
+  timing,
   control,
   ext_trigger,
   data,
@@ -70,6 +71,7 @@ module mani_readout_LTC2324_read_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN mani_readout_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
+input wire [7 : 0] timing;
 input wire [7 : 0] control;
 input wire ext_trigger;
 output wire [15 : 0] data;
@@ -80,10 +82,10 @@ input wire clkout;
 input wire sdo;
 
   LTC2324_read #(
-    .CNV_DELAY(5),
     .LENGTH(16)
   ) inst (
     .clk(clk),
+    .timing(timing),
     .control(control),
     .ext_trigger(ext_trigger),
     .data(data),
