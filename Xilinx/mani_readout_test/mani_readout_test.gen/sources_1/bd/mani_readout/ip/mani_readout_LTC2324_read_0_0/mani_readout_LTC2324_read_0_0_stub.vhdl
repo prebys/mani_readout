@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Tue Apr  8 16:18:56 2025
+-- Date        : Wed Apr  9 09:27:17 2025
 -- Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub {g:/My
 --               Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.vhdl}

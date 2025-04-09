@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Tue Apr  8 16:18:56 2025
+-- Date        : Wed Apr  9 09:27:17 2025
 -- Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {g:/My
 --               Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl}
@@ -19,11 +19,11 @@ entity mani_readout_LTC2324_read_0_0_LTC2324_read is
   port (
     Q : out STD_LOGIC_VECTOR ( 0 to 0 );
     data : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    state : out STD_LOGIC_VECTOR ( 1 downto 0 );
     cnv : out STD_LOGIC;
+    state : out STD_LOGIC_VECTOR ( 1 downto 0 );
     sck : out STD_LOGIC;
     clk : in STD_LOGIC;
-    control : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    control : in STD_LOGIC_VECTOR ( 2 downto 0 );
     sdo : in STD_LOGIC;
     ext_trigger : in STD_LOGIC;
     timing : in STD_LOGIC_VECTOR ( 7 downto 0 )
@@ -35,6 +35,7 @@ end mani_readout_LTC2324_read_0_0_LTC2324_read;
 architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal \FSM_onehot_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[0]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state[0]_i_3_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[1]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[2]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[3]_i_1_n_0\ : STD_LOGIC;
@@ -44,7 +45,6 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal \FSM_onehot_state_reg_n_0_[4]\ : STD_LOGIC;
   signal \^q\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal clk_counter : STD_LOGIC;
-  signal clk_counter0 : STD_LOGIC;
   signal \clk_counter1_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \clk_counter1_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \clk_counter1_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -235,8 +235,6 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal \clk_counter_reg_n_0_[7]\ : STD_LOGIC;
   signal \clk_counter_reg_n_0_[8]\ : STD_LOGIC;
   signal \clk_counter_reg_n_0_[9]\ : STD_LOGIC;
-  signal \^cnv\ : STD_LOGIC;
-  signal cnv_i_1_n_0 : STD_LOGIC;
   signal \^data\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \data[15]_i_1_n_0\ : STD_LOGIC;
   signal \data[15]_i_2_n_0\ : STD_LOGIC;
@@ -324,7 +322,7 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal \i__carry_i_8_n_0\ : STD_LOGIC;
   signal last_arm : STD_LOGIC;
   signal last_trigger : STD_LOGIC;
-  signal nread : STD_LOGIC;
+  signal \nread[0]_i_1_n_0\ : STD_LOGIC;
   signal \nread[0]_i_3_n_0\ : STD_LOGIC;
   signal nread_reg : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \nread_reg[0]_i_2_n_0\ : STD_LOGIC;
@@ -393,7 +391,6 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal p_0_in : STD_LOGIC_VECTOR ( 31 downto 4 );
   signal \^sck\ : STD_LOGIC;
   signal sck_i_1_n_0 : STD_LOGIC;
-  signal \^state\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \state1_inferred__0/i__carry__0_n_0\ : STD_LOGIC;
   signal \state1_inferred__0/i__carry__0_n_1\ : STD_LOGIC;
   signal \state1_inferred__0/i__carry__0_n_2\ : STD_LOGIC;
@@ -408,6 +405,9 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal \state1_inferred__0/i__carry_n_1\ : STD_LOGIC;
   signal \state1_inferred__0/i__carry_n_2\ : STD_LOGIC;
   signal \state1_inferred__0/i__carry_n_3\ : STD_LOGIC;
+  signal synch_cnv : STD_LOGIC;
+  signal synch_cnv_i_1_n_0 : STD_LOGIC;
+  signal synch_cnv_reg_n_0 : STD_LOGIC;
   signal trigger : STD_LOGIC;
   signal NLW_clk_counter1_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_clk_counter1_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -428,12 +428,15 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   signal \NLW_state1_inferred__0/i__carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_state1_inferred__0/i__carry__2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_state1_inferred__0/i__carry__2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \FSM_onehot_state[0]_i_3\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \FSM_onehot_state[4]_i_1\ : label is "soft_lutpair3";
   attribute FSM_ENCODED_STATES : string;
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[0]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[1]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[2]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[3]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[4]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[0]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[1]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[2]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[3]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[4]\ : label is "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010";
   attribute COMPARATOR_THRESHOLD : integer;
   attribute COMPARATOR_THRESHOLD of clk_counter1_carry : label is 11;
   attribute COMPARATOR_THRESHOLD of \clk_counter1_carry__0\ : label is 11;
@@ -452,39 +455,38 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   attribute ADDER_THRESHOLD of \clk_counter2_carry__4\ : label is 35;
   attribute ADDER_THRESHOLD of \clk_counter2_carry__5\ : label is 35;
   attribute ADDER_THRESHOLD of \clk_counter2_carry__6\ : label is 35;
-  attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \clk_counter[0]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \clk_counter[10]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \clk_counter[11]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \clk_counter[12]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \clk_counter[13]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \clk_counter[14]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \clk_counter[15]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \clk_counter[16]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \clk_counter[17]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \clk_counter[18]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \clk_counter[19]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \clk_counter[1]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \clk_counter[20]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \clk_counter[21]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \clk_counter[22]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \clk_counter[23]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \clk_counter[24]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \clk_counter[25]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \clk_counter[26]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \clk_counter[27]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \clk_counter[28]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \clk_counter[29]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \clk_counter[2]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \clk_counter[30]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \clk_counter[3]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \clk_counter[4]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \clk_counter[5]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \clk_counter[6]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \clk_counter[7]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \clk_counter[8]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \clk_counter[9]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of cnv_i_1 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \clk_counter[10]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \clk_counter[11]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \clk_counter[12]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \clk_counter[13]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \clk_counter[14]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \clk_counter[15]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \clk_counter[16]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \clk_counter[17]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \clk_counter[18]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \clk_counter[19]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \clk_counter[1]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \clk_counter[20]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \clk_counter[21]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \clk_counter[22]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \clk_counter[23]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \clk_counter[24]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \clk_counter[25]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \clk_counter[26]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \clk_counter[27]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \clk_counter[28]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \clk_counter[29]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \clk_counter[2]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \clk_counter[30]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \clk_counter[3]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \clk_counter[4]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \clk_counter[5]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \clk_counter[6]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \clk_counter[7]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \clk_counter[8]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \clk_counter[9]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of cnv_INST_0 : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \data[15]_i_4\ : label is "soft_lutpair2";
   attribute ADDER_THRESHOLD of \i__carry__0_i_5\ : label is 35;
   attribute ADDER_THRESHOLD of \i__carry__0_i_6\ : label is 35;
@@ -502,30 +504,28 @@ architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
   attribute ADDER_THRESHOLD of \nread_reg[28]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \nread_reg[4]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \nread_reg[8]_i_1\ : label is 11;
-  attribute SOFT_HLUTNM of sck_i_1 : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of sck_i_1 : label is "soft_lutpair1";
   attribute COMPARATOR_THRESHOLD of \state1_inferred__0/i__carry\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \state1_inferred__0/i__carry__0\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \state1_inferred__0/i__carry__1\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \state1_inferred__0/i__carry__2\ : label is 11;
-  attribute SOFT_HLUTNM of \state[0]_INST_0\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \state[1]_INST_0\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \state[0]_INST_0\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \state[1]_INST_0\ : label is "soft_lutpair1";
 begin
   Q(0) <= \^q\(0);
-  cnv <= \^cnv\;
   data(15 downto 0) <= \^data\(15 downto 0);
   sck <= \^sck\;
-  state(1 downto 0) <= \^state\(1 downto 0);
 \FSM_onehot_state[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFBAAA"
+      INIT => X"FFFEFFFEFFFEFFFF"
     )
         port map (
       I0 => \^q\(0),
-      I1 => last_trigger,
-      I2 => clk_counter0,
-      I3 => trigger,
-      I4 => \^state\(1),
-      I5 => \FSM_onehot_state_reg_n_0_[2]\,
+      I1 => \FSM_onehot_state_reg_n_0_[2]\,
+      I2 => \FSM_onehot_state_reg_n_0_[4]\,
+      I3 => \FSM_onehot_state_reg_n_0_[3]\,
+      I4 => last_trigger,
+      I5 => \FSM_onehot_state[0]_i_3_n_0\,
       O => \FSM_onehot_state[0]_i_1_n_0\
     );
 \FSM_onehot_state[0]_i_2\: unisim.vcomponents.LUT6
@@ -534,12 +534,23 @@ begin
     )
         port map (
       I0 => \state1_inferred__0/i__carry__2_n_2\,
-      I1 => \clk_counter1_inferred__0/i__carry__2_n_0\,
-      I2 => \FSM_onehot_state_reg_n_0_[4]\,
+      I1 => \FSM_onehot_state_reg_n_0_[4]\,
+      I2 => \clk_counter1_inferred__0/i__carry__2_n_0\,
       I3 => \^q\(0),
       I4 => last_arm,
       I5 => control(0),
       O => \FSM_onehot_state[0]_i_2_n_0\
+    );
+\FSM_onehot_state[0]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"41FF"
+    )
+        port map (
+      I0 => control(1),
+      I1 => ext_trigger,
+      I2 => control(2),
+      I3 => synch_cnv,
+      O => \FSM_onehot_state[0]_i_3_n_0\
     );
 \FSM_onehot_state[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -558,20 +569,20 @@ begin
         port map (
       I0 => \clk_counter1_carry__2_n_0\,
       I1 => \FSM_onehot_state_reg_n_0_[2]\,
-      I2 => clk_counter0,
+      I2 => synch_cnv,
       O => \FSM_onehot_state[2]_i_1_n_0\
     );
 \FSM_onehot_state[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFC0EAEAC0C0EAEA"
+      INIT => X"FFC0C0C0EAEAEAEA"
     )
         port map (
       I0 => \FSM_onehot_state_reg_n_0_[3]\,
       I1 => \clk_counter1_carry__2_n_0\,
       I2 => \FSM_onehot_state_reg_n_0_[2]\,
       I3 => \state1_inferred__0/i__carry__2_n_2\,
-      I4 => \clk_counter1_inferred__0/i__carry__2_n_0\,
-      I5 => \FSM_onehot_state_reg_n_0_[4]\,
+      I4 => \FSM_onehot_state_reg_n_0_[4]\,
+      I5 => \clk_counter1_inferred__0/i__carry__2_n_0\,
       O => \FSM_onehot_state[3]_i_1_n_0\
     );
 \FSM_onehot_state[4]_i_1\: unisim.vcomponents.LUT3
@@ -603,7 +614,7 @@ begin
       C => clk,
       CE => \FSM_onehot_state[0]_i_1_n_0\,
       D => \FSM_onehot_state[1]_i_1_n_0\,
-      Q => clk_counter0,
+      Q => synch_cnv,
       R => '0'
     );
 \FSM_onehot_state_reg[2]\: unisim.vcomponents.FDRE
@@ -963,8 +974,8 @@ clk_counter1_carry_i_4: unisim.vcomponents.LUT4
         port map (
       I0 => clk_counter2_carry_n_7,
       I1 => timing(5),
-      I2 => timing(4),
-      I3 => \clk_counter_reg_n_0_[0]\,
+      I2 => \clk_counter_reg_n_0_[0]\,
+      I3 => timing(4),
       O => clk_counter1_carry_i_4_n_0
     );
 clk_counter1_carry_i_5: unisim.vcomponents.LUT2
@@ -998,13 +1009,13 @@ clk_counter1_carry_i_7: unisim.vcomponents.LUT4
     );
 clk_counter1_carry_i_8: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6006"
+      INIT => X"0990"
     )
         port map (
-      I0 => timing(4),
-      I1 => \clk_counter_reg_n_0_[0]\,
-      I2 => clk_counter2_carry_n_7,
-      I3 => timing(5),
+      I0 => clk_counter2_carry_n_7,
+      I1 => timing(5),
+      I2 => \clk_counter_reg_n_0_[0]\,
+      I3 => timing(4),
       O => clk_counter1_carry_i_8_n_0
     );
 \clk_counter1_inferred__0/i__carry\: unisim.vcomponents.CARRY4
@@ -1573,7 +1584,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[0]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[0]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -1584,7 +1595,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[10]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[10]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[11]\: unisim.vcomponents.FDRE
     generic map(
@@ -1595,7 +1606,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[11]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[11]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[12]\: unisim.vcomponents.FDRE
     generic map(
@@ -1606,7 +1617,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[12]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[12]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[13]\: unisim.vcomponents.FDRE
     generic map(
@@ -1617,7 +1628,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[13]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[13]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[14]\: unisim.vcomponents.FDRE
     generic map(
@@ -1628,7 +1639,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[14]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[14]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[15]\: unisim.vcomponents.FDRE
     generic map(
@@ -1639,7 +1650,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[15]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[15]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[16]\: unisim.vcomponents.FDRE
     generic map(
@@ -1650,7 +1661,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[16]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[16]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[17]\: unisim.vcomponents.FDRE
     generic map(
@@ -1661,7 +1672,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[17]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[17]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[18]\: unisim.vcomponents.FDRE
     generic map(
@@ -1672,7 +1683,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[18]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[18]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[19]\: unisim.vcomponents.FDRE
     generic map(
@@ -1683,7 +1694,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[19]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[19]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -1694,7 +1705,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[1]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[1]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[20]\: unisim.vcomponents.FDRE
     generic map(
@@ -1705,7 +1716,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[20]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[20]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[21]\: unisim.vcomponents.FDRE
     generic map(
@@ -1716,7 +1727,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[21]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[21]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[22]\: unisim.vcomponents.FDRE
     generic map(
@@ -1727,7 +1738,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[22]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[22]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[23]\: unisim.vcomponents.FDRE
     generic map(
@@ -1738,7 +1749,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[23]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[23]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[24]\: unisim.vcomponents.FDRE
     generic map(
@@ -1749,7 +1760,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[24]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[24]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[25]\: unisim.vcomponents.FDRE
     generic map(
@@ -1760,7 +1771,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[25]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[25]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[26]\: unisim.vcomponents.FDRE
     generic map(
@@ -1771,7 +1782,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[26]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[26]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[27]\: unisim.vcomponents.FDRE
     generic map(
@@ -1782,7 +1793,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[27]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[27]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[28]\: unisim.vcomponents.FDRE
     generic map(
@@ -1793,7 +1804,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[28]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[28]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[29]\: unisim.vcomponents.FDRE
     generic map(
@@ -1804,7 +1815,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[29]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[29]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -1815,7 +1826,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[2]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[2]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[30]\: unisim.vcomponents.FDRE
     generic map(
@@ -1826,7 +1837,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[30]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[30]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[31]\: unisim.vcomponents.FDRE
     generic map(
@@ -1837,7 +1848,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[31]_i_2_n_0\,
       Q => \clk_counter_reg_n_0_[31]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -1848,7 +1859,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[3]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[3]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -1859,7 +1870,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[4]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[4]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -1870,7 +1881,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[5]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[5]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -1881,7 +1892,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[6]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[6]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -1892,7 +1903,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[7]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[7]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -1903,7 +1914,7 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[8]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[8]\,
-      R => clk_counter0
+      R => synch_cnv
     );
 \clk_counter_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -1914,29 +1925,19 @@ clk_counter2_carry: unisim.vcomponents.CARRY4
       CE => clk_counter,
       D => \clk_counter[9]_i_1_n_0\,
       Q => \clk_counter_reg_n_0_[9]\,
-      R => clk_counter0
+      R => synch_cnv
     );
-cnv_i_1: unisim.vcomponents.LUT4
+cnv_INST_0: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"EFEE"
+      INIT => X"000055D7"
     )
         port map (
-      I0 => clk_counter0,
-      I1 => \^q\(0),
-      I2 => \FSM_onehot_state_reg_n_0_[2]\,
-      I3 => \^cnv\,
-      O => cnv_i_1_n_0
-    );
-cnv_reg: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => clk,
-      CE => '1',
-      D => cnv_i_1_n_0,
-      Q => \^cnv\,
-      R => '0'
+      I0 => synch_cnv,
+      I1 => control(2),
+      I2 => ext_trigger,
+      I3 => control(1),
+      I4 => synch_cnv_reg_n_0,
+      O => cnv
     );
 \data[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -2632,8 +2633,8 @@ cnv_reg: unisim.vcomponents.FDRE
         port map (
       I0 => clk_counter2_carry_n_7,
       I1 => timing(1),
-      I2 => timing(0),
-      I3 => \clk_counter_reg_n_0_[0]\,
+      I2 => \clk_counter_reg_n_0_[0]\,
+      I3 => timing(0),
       O => \i__carry_i_4_n_0\
     );
 \i__carry_i_4__0\: unisim.vcomponents.LUT2
@@ -2710,13 +2711,13 @@ cnv_reg: unisim.vcomponents.FDRE
     );
 \i__carry_i_8\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6006"
+      INIT => X"0990"
     )
         port map (
-      I0 => timing(0),
-      I1 => \clk_counter_reg_n_0_[0]\,
-      I2 => clk_counter2_carry_n_7,
-      I3 => timing(1),
+      I0 => clk_counter2_carry_n_7,
+      I1 => timing(1),
+      I2 => \clk_counter_reg_n_0_[0]\,
+      I3 => timing(0),
       O => \i__carry_i_8_n_0\
     );
 \i__carry_i_8__0\: unisim.vcomponents.CARRY4
@@ -2742,13 +2743,14 @@ last_arm_reg: unisim.vcomponents.FDRE
       Q => last_arm,
       R => '0'
     );
-last_trigger_i_1: unisim.vcomponents.LUT2
+last_trigger_i_1: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E"
+      INIT => X"F6"
     )
         port map (
-      I0 => control(1),
+      I0 => control(2),
       I1 => ext_trigger,
+      I2 => control(1),
       O => trigger
     );
 last_trigger_reg: unisim.vcomponents.FDRE
@@ -2769,7 +2771,7 @@ last_trigger_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \FSM_onehot_state_reg_n_0_[4]\,
       I1 => \clk_counter1_inferred__0/i__carry__2_n_0\,
-      O => nread
+      O => \nread[0]_i_1_n_0\
     );
 \nread[0]_i_3\: unisim.vcomponents.LUT1
     generic map(
@@ -2782,10 +2784,10 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[0]_i_2_n_7\,
       Q => nread_reg(0),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[0]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2806,26 +2808,26 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[8]_i_1_n_5\,
       Q => nread_reg(10),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[8]_i_1_n_4\,
       Q => nread_reg(11),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[12]_i_1_n_7\,
       Q => nread_reg(12),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[12]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -2845,34 +2847,34 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[12]_i_1_n_6\,
       Q => nread_reg(13),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[12]_i_1_n_5\,
       Q => nread_reg(14),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[12]_i_1_n_4\,
       Q => nread_reg(15),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[16]_i_1_n_7\,
       Q => nread_reg(16),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[16]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -2892,42 +2894,42 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[16]_i_1_n_6\,
       Q => nread_reg(17),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[16]_i_1_n_5\,
       Q => nread_reg(18),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[16]_i_1_n_4\,
       Q => nread_reg(19),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[0]_i_2_n_6\,
       Q => nread_reg(1),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[20]_i_1_n_7\,
       Q => nread_reg(20),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[20]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -2947,34 +2949,34 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[20]_i_1_n_6\,
       Q => nread_reg(21),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[20]_i_1_n_5\,
       Q => nread_reg(22),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[20]_i_1_n_4\,
       Q => nread_reg(23),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[24]_i_1_n_7\,
       Q => nread_reg(24),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[24]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -2994,34 +2996,34 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[24]_i_1_n_6\,
       Q => nread_reg(25),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[24]_i_1_n_5\,
       Q => nread_reg(26),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[24]_i_1_n_4\,
       Q => nread_reg(27),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[28]_i_1_n_7\,
       Q => nread_reg(28),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[28]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -3041,50 +3043,50 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[28]_i_1_n_6\,
       Q => nread_reg(29),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[0]_i_2_n_5\,
       Q => nread_reg(2),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[28]_i_1_n_5\,
       Q => nread_reg(30),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[28]_i_1_n_4\,
       Q => nread_reg(31),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[0]_i_2_n_4\,
       Q => nread_reg(3),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[4]_i_1_n_7\,
       Q => nread_reg(4),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[4]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -3104,34 +3106,34 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[4]_i_1_n_6\,
       Q => nread_reg(5),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[4]_i_1_n_5\,
       Q => nread_reg(6),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[4]_i_1_n_4\,
       Q => nread_reg(7),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[8]_i_1_n_7\,
       Q => nread_reg(8),
-      R => clk_counter0
+      R => synch_cnv
     );
 \nread_reg[8]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -3151,21 +3153,20 @@ last_trigger_reg: unisim.vcomponents.FDRE
 \nread_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => nread,
+      CE => \nread[0]_i_1_n_0\,
       D => \nread_reg[8]_i_1_n_6\,
       Q => nread_reg(9),
-      R => clk_counter0
+      R => synch_cnv
     );
-sck_i_1: unisim.vcomponents.LUT5
+sck_i_1: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F0F1F0F0"
+      INIT => X"ABAA"
     )
         port map (
-      I0 => clk_counter0,
-      I1 => \^q\(0),
-      I2 => \FSM_onehot_state_reg_n_0_[4]\,
-      I3 => \FSM_onehot_state_reg_n_0_[3]\,
-      I4 => \^sck\,
+      I0 => \FSM_onehot_state_reg_n_0_[4]\,
+      I1 => \FSM_onehot_state_reg_n_0_[3]\,
+      I2 => \^q\(0),
+      I3 => \^sck\,
       O => sck_i_1_n_0
     );
 sck_reg: unisim.vcomponents.FDRE
@@ -3247,7 +3248,7 @@ sck_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \FSM_onehot_state_reg_n_0_[2]\,
       I1 => \FSM_onehot_state_reg_n_0_[4]\,
-      O => \^state\(0)
+      O => state(0)
     );
 \state[1]_INST_0\: unisim.vcomponents.LUT2
     generic map(
@@ -3256,7 +3257,30 @@ sck_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \FSM_onehot_state_reg_n_0_[3]\,
       I1 => \FSM_onehot_state_reg_n_0_[4]\,
-      O => \^state\(1)
+      O => state(1)
+    );
+synch_cnv_i_1: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00002E22"
+    )
+        port map (
+      I0 => synch_cnv_reg_n_0,
+      I1 => synch_cnv,
+      I2 => last_trigger,
+      I3 => trigger,
+      I4 => \^q\(0),
+      O => synch_cnv_i_1_n_0
+    );
+synch_cnv_reg: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => clk,
+      CE => '1',
+      D => synch_cnv_i_1_n_0,
+      Q => synch_cnv_reg_n_0,
+      R => '0'
     );
 end STRUCTURE;
 library IEEE;
@@ -3299,6 +3323,7 @@ inst: entity work.mani_readout_LTC2324_read_0_0_LTC2324_read
       Q(0) => state(2),
       clk => clk,
       cnv => cnv,
+      control(2) => control(7),
       control(1 downto 0) => control(1 downto 0),
       data(15 downto 0) => data(15 downto 0),
       ext_trigger => ext_trigger,

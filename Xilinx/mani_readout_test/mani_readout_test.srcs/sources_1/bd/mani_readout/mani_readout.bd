@@ -2951,7 +2951,6 @@
           "data/s_axi_aclk",
           "dummy_ADC/s_axi_aclk",
           "LTC2324_dummy_0/clk",
-          "LTC2324_read_0/clk",
           "processing_system7_0/M_AXI_GP0_ACLK",
           "state/s_axi_aclk",
           "timing/s_axi_aclk",
@@ -2962,7 +2961,8 @@
           "ps7_0_axi_periph/M01_ACLK",
           "ps7_0_axi_periph/M02_ACLK",
           "ps7_0_axi_periph/M03_ACLK",
-          "ps7_0_axi_periph/M04_ACLK"
+          "ps7_0_axi_periph/M04_ACLK",
+          "LTC2324_read_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

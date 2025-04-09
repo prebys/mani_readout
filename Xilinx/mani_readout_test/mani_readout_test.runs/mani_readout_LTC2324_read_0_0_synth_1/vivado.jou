@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Tue Apr  8 16:17:56 2025
-# Process ID: 9416
+# Start of session at: Wed Apr  9 09:26:27 2025
+# Process ID: 18764
 # Current directory: G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1
 # Command line: vivado.exe -log mani_readout_LTC2324_read_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mani_readout_LTC2324_read_0_0.tcl
 # Log file: G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/mani_readout_LTC2324_read_0_0_synth_1/mani_readout_LTC2324_read_0_0.vds

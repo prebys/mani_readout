@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Tue Apr  8 16:18:56 2025
+// Date        : Wed Apr  9 09:27:17 2025
 // Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {g:/My
 //               Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.v}
@@ -52,7 +52,7 @@ module mani_readout_LTC2324_read_0_0
        (.Q(state[2]),
         .clk(clk),
         .cnv(cnv),
-        .control(control[1:0]),
+        .control({control[7],control[1:0]}),
         .data(data),
         .ext_trigger(ext_trigger),
         .sck(sck),
@@ -65,8 +65,8 @@ endmodule
 module mani_readout_LTC2324_read_0_0_LTC2324_read
    (Q,
     data,
-    state,
     cnv,
+    state,
     sck,
     clk,
     control,
@@ -75,17 +75,18 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     timing);
   output [0:0]Q;
   output [15:0]data;
-  output [1:0]state;
   output cnv;
+  output [1:0]state;
   output sck;
   input clk;
-  input [1:0]control;
+  input [2:0]control;
   input sdo;
   input ext_trigger;
   input [7:0]timing;
 
   wire \FSM_onehot_state[0]_i_1_n_0 ;
   wire \FSM_onehot_state[0]_i_2_n_0 ;
+  wire \FSM_onehot_state[0]_i_3_n_0 ;
   wire \FSM_onehot_state[1]_i_1_n_0 ;
   wire \FSM_onehot_state[2]_i_1_n_0 ;
   wire \FSM_onehot_state[3]_i_1_n_0 ;
@@ -96,7 +97,6 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire [0:0]Q;
   wire clk;
   wire clk_counter;
-  wire clk_counter0;
   wire clk_counter1_carry__0_i_1_n_0;
   wire clk_counter1_carry__0_i_2_n_0;
   wire clk_counter1_carry__0_i_3_n_0;
@@ -288,8 +288,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire \clk_counter_reg_n_0_[8] ;
   wire \clk_counter_reg_n_0_[9] ;
   wire cnv;
-  wire cnv_i_1_n_0;
-  wire [1:0]control;
+  wire [2:0]control;
   wire [15:0]data;
   wire \data[15]_i_1_n_0 ;
   wire \data[15]_i_2_n_0 ;
@@ -378,7 +377,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire i__carry_i_8_n_0;
   wire last_arm;
   wire last_trigger;
-  wire nread;
+  wire \nread[0]_i_1_n_0 ;
   wire \nread[0]_i_3_n_0 ;
   wire [31:0]nread_reg;
   wire \nread_reg[0]_i_2_n_0 ;
@@ -463,6 +462,9 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire \state1_inferred__0/i__carry_n_1 ;
   wire \state1_inferred__0/i__carry_n_2 ;
   wire \state1_inferred__0/i__carry_n_3 ;
+  wire synch_cnv;
+  wire synch_cnv_i_1_n_0;
+  wire synch_cnv_reg_n_0;
   wire [7:0]timing;
   wire trigger;
   wire [3:0]NLW_clk_counter1_carry_O_UNCONNECTED;
@@ -486,25 +488,34 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire [3:0]\NLW_state1_inferred__0/i__carry__2_O_UNCONNECTED ;
 
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFBAAA)) 
+    .INIT(64'hFFFEFFFEFFFEFFFF)) 
     \FSM_onehot_state[0]_i_1 
        (.I0(Q),
-        .I1(last_trigger),
-        .I2(clk_counter0),
-        .I3(trigger),
-        .I4(state[1]),
-        .I5(\FSM_onehot_state_reg_n_0_[2] ),
+        .I1(\FSM_onehot_state_reg_n_0_[2] ),
+        .I2(\FSM_onehot_state_reg_n_0_[4] ),
+        .I3(\FSM_onehot_state_reg_n_0_[3] ),
+        .I4(last_trigger),
+        .I5(\FSM_onehot_state[0]_i_3_n_0 ),
         .O(\FSM_onehot_state[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hFF404040FF40FF40)) 
     \FSM_onehot_state[0]_i_2 
        (.I0(\state1_inferred__0/i__carry__2_n_2 ),
-        .I1(\clk_counter1_inferred__0/i__carry__2_n_0 ),
-        .I2(\FSM_onehot_state_reg_n_0_[4] ),
+        .I1(\FSM_onehot_state_reg_n_0_[4] ),
+        .I2(\clk_counter1_inferred__0/i__carry__2_n_0 ),
         .I3(Q),
         .I4(last_arm),
         .I5(control[0]),
         .O(\FSM_onehot_state[0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h41FF)) 
+    \FSM_onehot_state[0]_i_3 
+       (.I0(control[1]),
+        .I1(ext_trigger),
+        .I2(control[2]),
+        .I3(synch_cnv),
+        .O(\FSM_onehot_state[0]_i_3_n_0 ));
   LUT3 #(
     .INIT(8'h08)) 
     \FSM_onehot_state[1]_i_1 
@@ -517,18 +528,19 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     \FSM_onehot_state[2]_i_1 
        (.I0(clk_counter1_carry__2_n_0),
         .I1(\FSM_onehot_state_reg_n_0_[2] ),
-        .I2(clk_counter0),
+        .I2(synch_cnv),
         .O(\FSM_onehot_state[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFC0EAEAC0C0EAEA)) 
+    .INIT(64'hFFC0C0C0EAEAEAEA)) 
     \FSM_onehot_state[3]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[3] ),
         .I1(clk_counter1_carry__2_n_0),
         .I2(\FSM_onehot_state_reg_n_0_[2] ),
         .I3(\state1_inferred__0/i__carry__2_n_2 ),
-        .I4(\clk_counter1_inferred__0/i__carry__2_n_0 ),
-        .I5(\FSM_onehot_state_reg_n_0_[4] ),
+        .I4(\FSM_onehot_state_reg_n_0_[4] ),
+        .I5(\clk_counter1_inferred__0/i__carry__2_n_0 ),
         .O(\FSM_onehot_state[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \FSM_onehot_state[4]_i_1 
@@ -536,7 +548,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter1_inferred__0/i__carry__2_n_0 ),
         .I2(\FSM_onehot_state_reg_n_0_[4] ),
         .O(\FSM_onehot_state[4]_i_1_n_0 ));
-  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010" *) 
+  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010" *) 
   FDRE #(
     .INIT(1'b1)) 
     \FSM_onehot_state_reg[0] 
@@ -545,16 +557,16 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .D(\FSM_onehot_state[0]_i_2_n_0 ),
         .Q(Q),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010" *) 
+  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[1] 
        (.C(clk),
         .CE(\FSM_onehot_state[0]_i_1_n_0 ),
         .D(\FSM_onehot_state[1]_i_1_n_0 ),
-        .Q(clk_counter0),
+        .Q(synch_cnv),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010" *) 
+  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[2] 
@@ -563,7 +575,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .D(\FSM_onehot_state[2]_i_1_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[2] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010" *) 
+  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[3] 
@@ -572,7 +584,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .D(\FSM_onehot_state[3]_i_1_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[3] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,IDLE:00010" *) 
+  (* FSM_ENCODED_STATES = "CNV:00100,SCK_HI:10000,SCK_LO:01000,DONE:00001,READY:00010" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[4] 
@@ -782,8 +794,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     clk_counter1_carry_i_4
        (.I0(clk_counter2_carry_n_7),
         .I1(timing[5]),
-        .I2(timing[4]),
-        .I3(\clk_counter_reg_n_0_[0] ),
+        .I2(\clk_counter_reg_n_0_[0] ),
+        .I3(timing[4]),
         .O(clk_counter1_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -806,12 +818,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I3(timing[6]),
         .O(clk_counter1_carry_i_7_n_0));
   LUT4 #(
-    .INIT(16'h6006)) 
+    .INIT(16'h0990)) 
     clk_counter1_carry_i_8
-       (.I0(timing[4]),
-        .I1(\clk_counter_reg_n_0_[0] ),
-        .I2(clk_counter2_carry_n_7),
-        .I3(timing[5]),
+       (.I0(clk_counter2_carry_n_7),
+        .I1(timing[5]),
+        .I2(\clk_counter_reg_n_0_[0] ),
+        .I3(timing[4]),
         .O(clk_counter1_carry_i_8_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \clk_counter1_inferred__0/i__carry 
@@ -917,7 +929,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[10]_i_1 
@@ -925,7 +937,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[11]_i_1 
@@ -933,7 +945,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[12]_i_1 
@@ -941,7 +953,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[13]_i_1 
@@ -949,7 +961,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[14]_i_1 
@@ -957,7 +969,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[15]_i_1 
@@ -965,7 +977,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[16]_i_1 
@@ -973,7 +985,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[16]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[17]_i_1 
@@ -981,7 +993,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[18]_i_1 
@@ -989,7 +1001,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[19]_i_1 
@@ -997,7 +1009,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[1]_i_1 
@@ -1005,7 +1017,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[20]_i_1 
@@ -1013,7 +1025,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[21]_i_1 
@@ -1021,7 +1033,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[22]_i_1 
@@ -1029,7 +1041,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[22]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[23]_i_1 
@@ -1037,7 +1049,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[23]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[24]_i_1 
@@ -1045,7 +1057,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[24]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[25]_i_1 
@@ -1053,7 +1065,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[25]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[26]_i_1 
@@ -1061,7 +1073,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[26]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[27]_i_1 
@@ -1069,7 +1081,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[27]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[28]_i_1 
@@ -1077,7 +1089,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[28]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[29]_i_1 
@@ -1085,7 +1097,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[29]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[2]_i_1 
@@ -1093,7 +1105,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[30]_i_1 
@@ -1124,7 +1136,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I3(\FSM_onehot_state_reg_n_0_[2] ),
         .I4(clk_counter1_carry__2_n_0),
         .O(\clk_counter[31]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[3]_i_1 
@@ -1132,7 +1144,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[4]_i_1 
@@ -1140,7 +1152,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[5]_i_1 
@@ -1148,7 +1160,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[6]_i_1 
@@ -1156,7 +1168,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[7]_i_1 
@@ -1164,7 +1176,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[8]_i_1 
@@ -1172,7 +1184,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(\clk_counter[31]_i_3_n_0 ),
         .I2(Q),
         .O(\clk_counter[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \clk_counter[9]_i_1 
@@ -1187,7 +1199,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[0]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[0] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[10] 
@@ -1195,7 +1207,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[10]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[10] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[11] 
@@ -1203,7 +1215,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[11]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[11] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[12] 
@@ -1211,7 +1223,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[12]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[12] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[13] 
@@ -1219,7 +1231,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[13]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[13] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[14] 
@@ -1227,7 +1239,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[14]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[14] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[15] 
@@ -1235,7 +1247,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[15]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[15] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[16] 
@@ -1243,7 +1255,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[16]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[16] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[17] 
@@ -1251,7 +1263,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[17]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[17] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[18] 
@@ -1259,7 +1271,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[18]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[18] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[19] 
@@ -1267,7 +1279,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[19]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[19] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[1] 
@@ -1275,7 +1287,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[1]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[1] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[20] 
@@ -1283,7 +1295,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[20]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[20] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[21] 
@@ -1291,7 +1303,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[21]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[21] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[22] 
@@ -1299,7 +1311,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[22]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[22] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[23] 
@@ -1307,7 +1319,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[23]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[23] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[24] 
@@ -1315,7 +1327,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[24]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[24] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[25] 
@@ -1323,7 +1335,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[25]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[25] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[26] 
@@ -1331,7 +1343,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[26]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[26] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[27] 
@@ -1339,7 +1351,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[27]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[27] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[28] 
@@ -1347,7 +1359,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[28]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[28] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[29] 
@@ -1355,7 +1367,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[29]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[29] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[2] 
@@ -1363,7 +1375,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[2]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[2] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[30] 
@@ -1371,7 +1383,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[30]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[30] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[31] 
@@ -1379,7 +1391,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[31]_i_2_n_0 ),
         .Q(\clk_counter_reg_n_0_[31] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[3] 
@@ -1387,7 +1399,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[3]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[3] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[4] 
@@ -1395,7 +1407,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[4]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[4] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[5] 
@@ -1403,7 +1415,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[5]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[5] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[6] 
@@ -1411,7 +1423,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[6]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[6] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[7] 
@@ -1419,7 +1431,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[7]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[7] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[8] 
@@ -1427,7 +1439,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[8]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[8] ),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE #(
     .INIT(1'b0)) 
     \clk_counter_reg[9] 
@@ -1435,24 +1447,17 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CE(clk_counter),
         .D(\clk_counter[9]_i_1_n_0 ),
         .Q(\clk_counter_reg_n_0_[9] ),
-        .R(clk_counter0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hEFEE)) 
-    cnv_i_1
-       (.I0(clk_counter0),
-        .I1(Q),
-        .I2(\FSM_onehot_state_reg_n_0_[2] ),
-        .I3(cnv),
-        .O(cnv_i_1_n_0));
-  FDRE #(
-    .INIT(1'b0)) 
-    cnv_reg
-       (.C(clk),
-        .CE(1'b1),
-        .D(cnv_i_1_n_0),
-        .Q(cnv),
-        .R(1'b0));
+        .R(synch_cnv));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h000055D7)) 
+    cnv_INST_0
+       (.I0(synch_cnv),
+        .I1(control[2]),
+        .I2(ext_trigger),
+        .I3(control[1]),
+        .I4(synch_cnv_reg_n_0),
+        .O(cnv));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
     \data[15]_i_1 
@@ -1936,8 +1941,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     i__carry_i_4
        (.I0(clk_counter2_carry_n_7),
         .I1(timing[1]),
-        .I2(timing[0]),
-        .I3(\clk_counter_reg_n_0_[0] ),
+        .I2(\clk_counter_reg_n_0_[0] ),
+        .I3(timing[0]),
         .O(i__carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -1988,12 +1993,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .O(p_0_in[8:5]),
         .S(nread_reg[8:5]));
   LUT4 #(
-    .INIT(16'h6006)) 
+    .INIT(16'h0990)) 
     i__carry_i_8
-       (.I0(timing[0]),
-        .I1(\clk_counter_reg_n_0_[0] ),
-        .I2(clk_counter2_carry_n_7),
-        .I3(timing[1]),
+       (.I0(clk_counter2_carry_n_7),
+        .I1(timing[1]),
+        .I2(\clk_counter_reg_n_0_[0] ),
+        .I3(timing[0]),
         .O(i__carry_i_8_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry_i_8__0
@@ -2011,11 +2016,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .D(control[0]),
         .Q(last_arm),
         .R(1'b0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hF6)) 
     last_trigger_i_1
-       (.I0(control[1]),
+       (.I0(control[2]),
         .I1(ext_trigger),
+        .I2(control[1]),
         .O(trigger));
   FDRE #(
     .INIT(1'b0)) 
@@ -2030,7 +2036,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     \nread[0]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[4] ),
         .I1(\clk_counter1_inferred__0/i__carry__2_n_0 ),
-        .O(nread));
+        .O(\nread[0]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \nread[0]_i_3 
@@ -2038,10 +2044,10 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .O(\nread[0]_i_3_n_0 ));
   FDRE \nread_reg[0] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[0]_i_2_n_7 ),
         .Q(nread_reg[0]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[0]_i_2 
        (.CI(1'b0),
@@ -2052,22 +2058,22 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S({nread_reg[3:1],\nread[0]_i_3_n_0 }));
   FDRE \nread_reg[10] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[8]_i_1_n_5 ),
         .Q(nread_reg[10]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[11] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[8]_i_1_n_4 ),
         .Q(nread_reg[11]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[12] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[12]_i_1_n_7 ),
         .Q(nread_reg[12]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[12]_i_1 
        (.CI(\nread_reg[8]_i_1_n_0 ),
@@ -2078,28 +2084,28 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[15:12]));
   FDRE \nread_reg[13] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[12]_i_1_n_6 ),
         .Q(nread_reg[13]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[14] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[12]_i_1_n_5 ),
         .Q(nread_reg[14]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[15] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[12]_i_1_n_4 ),
         .Q(nread_reg[15]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[16] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[16]_i_1_n_7 ),
         .Q(nread_reg[16]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[16]_i_1 
        (.CI(\nread_reg[12]_i_1_n_0 ),
@@ -2110,34 +2116,34 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[19:16]));
   FDRE \nread_reg[17] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[16]_i_1_n_6 ),
         .Q(nread_reg[17]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[18] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[16]_i_1_n_5 ),
         .Q(nread_reg[18]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[19] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[16]_i_1_n_4 ),
         .Q(nread_reg[19]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[1] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[0]_i_2_n_6 ),
         .Q(nread_reg[1]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[20] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[20]_i_1_n_7 ),
         .Q(nread_reg[20]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[20]_i_1 
        (.CI(\nread_reg[16]_i_1_n_0 ),
@@ -2148,28 +2154,28 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[23:20]));
   FDRE \nread_reg[21] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[20]_i_1_n_6 ),
         .Q(nread_reg[21]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[22] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[20]_i_1_n_5 ),
         .Q(nread_reg[22]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[23] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[20]_i_1_n_4 ),
         .Q(nread_reg[23]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[24] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[24]_i_1_n_7 ),
         .Q(nread_reg[24]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[24]_i_1 
        (.CI(\nread_reg[20]_i_1_n_0 ),
@@ -2180,28 +2186,28 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[27:24]));
   FDRE \nread_reg[25] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[24]_i_1_n_6 ),
         .Q(nread_reg[25]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[26] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[24]_i_1_n_5 ),
         .Q(nread_reg[26]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[27] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[24]_i_1_n_4 ),
         .Q(nread_reg[27]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[28] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[28]_i_1_n_7 ),
         .Q(nread_reg[28]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[28]_i_1 
        (.CI(\nread_reg[24]_i_1_n_0 ),
@@ -2212,40 +2218,40 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[31:28]));
   FDRE \nread_reg[29] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[28]_i_1_n_6 ),
         .Q(nread_reg[29]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[2] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[0]_i_2_n_5 ),
         .Q(nread_reg[2]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[30] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[28]_i_1_n_5 ),
         .Q(nread_reg[30]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[31] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[28]_i_1_n_4 ),
         .Q(nread_reg[31]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[3] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[0]_i_2_n_4 ),
         .Q(nread_reg[3]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[4] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[4]_i_1_n_7 ),
         .Q(nread_reg[4]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[4]_i_1 
        (.CI(\nread_reg[0]_i_2_n_0 ),
@@ -2256,28 +2262,28 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[7:4]));
   FDRE \nread_reg[5] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[4]_i_1_n_6 ),
         .Q(nread_reg[5]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[6] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[4]_i_1_n_5 ),
         .Q(nread_reg[6]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[7] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[4]_i_1_n_4 ),
         .Q(nread_reg[7]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   FDRE \nread_reg[8] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[8]_i_1_n_7 ),
         .Q(nread_reg[8]),
-        .R(clk_counter0));
+        .R(synch_cnv));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \nread_reg[8]_i_1 
        (.CI(\nread_reg[4]_i_1_n_0 ),
@@ -2288,19 +2294,18 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .S(nread_reg[11:8]));
   FDRE \nread_reg[9] 
        (.C(clk),
-        .CE(nread),
+        .CE(\nread[0]_i_1_n_0 ),
         .D(\nread_reg[8]_i_1_n_6 ),
         .Q(nread_reg[9]),
-        .R(clk_counter0));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'hF0F1F0F0)) 
+        .R(synch_cnv));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'hABAA)) 
     sck_i_1
-       (.I0(clk_counter0),
-        .I1(Q),
-        .I2(\FSM_onehot_state_reg_n_0_[4] ),
-        .I3(\FSM_onehot_state_reg_n_0_[3] ),
-        .I4(sck),
+       (.I0(\FSM_onehot_state_reg_n_0_[4] ),
+        .I1(\FSM_onehot_state_reg_n_0_[3] ),
+        .I2(Q),
+        .I3(sck),
         .O(sck_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -2342,20 +2347,37 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .DI({1'b0,1'b0,p_0_in[31],1'b0}),
         .O(\NLW_state1_inferred__0/i__carry__2_O_UNCONNECTED [3:0]),
         .S({1'b0,1'b0,i__carry__2_i_2__0_n_0,i__carry__2_i_3__0_n_0}));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \state[0]_INST_0 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\FSM_onehot_state_reg_n_0_[4] ),
         .O(state[0]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \state[1]_INST_0 
        (.I0(\FSM_onehot_state_reg_n_0_[3] ),
         .I1(\FSM_onehot_state_reg_n_0_[4] ),
         .O(state[1]));
+  LUT5 #(
+    .INIT(32'h00002E22)) 
+    synch_cnv_i_1
+       (.I0(synch_cnv_reg_n_0),
+        .I1(synch_cnv),
+        .I2(last_trigger),
+        .I3(trigger),
+        .I4(Q),
+        .O(synch_cnv_i_1_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    synch_cnv_reg
+       (.C(clk),
+        .CE(1'b1),
+        .D(synch_cnv_i_1_n_0),
+        .Q(synch_cnv_reg_n_0),
+        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

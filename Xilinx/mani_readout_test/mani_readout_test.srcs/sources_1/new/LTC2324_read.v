@@ -9,6 +9,8 @@
 // 
 // History:
 //   07-APR-2025	E.Prebys	Original
+//   08-APR-2025	E.Prebys	Make cnv low assert prompt
+//   09-APR-2025	E.Prebys	Add polarity option to ext_trigger
 //////////////////////////////////////////////////////////////////////////////
 module LTC2324_read #(parameter LENGTH=16) (
 // Interface to the PS
@@ -20,53 +22,68 @@ module LTC2324_read #(parameter LENGTH=16) (
   input [7:0] control,		     // Control word
                                  //    control[0] - arm (asserted after read)
                                  //    control[1] - soft trigger
-                                 //    control[7:2] - (not used)
+                                 //    control[6:2] - (not used)
+                                 //    control[7] - ext_trigger polarity 
+                                 //                 0-> active HI
+                                 //                 1-> active LO
   input ext_trigger,		     // External trigger
   output reg [LENGTH-1:0] data=0,
-  output reg [2:0] state=4,   // current state
+  output reg [2:0] state,   // current state
 // Interface to the LTC2324
-  output reg cnv=0,			// convert signal (active LO)
+  output cnv,				// convert signal (active LO)
   output reg sck=0,			// serial clock
   input clkout,				// clock output 
   input sdo);				// Serial data
   
   // Set up state machine
-  parameter IDLE=0;			// Idle state. Wait for trigger
+  parameter READY=0;		// Wait for trigger
   parameter CNV=1;			// Received convert trigger
   parameter SCK_LO=2;       // Assert SCK LO
   parameter SCK_HI=3;       // SCK goes high, clock in data
   parameter DONE=4;			// Will stay here until data is read
+  
+  initial
+    state=DONE;             // Wait to arm
    
   reg last_trigger=0;		// Keep track of the last trigger bit
   reg last_arm=0;			// Keep track of last arm bit
   
-  wire trigger,arm;      
+  wire trigger,arm,ext_polarity;      
   // arm means ready for a trigger.  Asserted after reading the data
   assign arm=control[0];
-  // The trigger is the or of the soft trigger and external trigger
-  assign trigger=control[1]|ext_trigger;
+  // assign the trigger polarity
+  assign ext_polarity=control[7];
+   // The trigger is the or of the soft trigger and external trigger
+  assign trigger=control[1]|(ext_trigger^ext_polarity);
+ 
   // set up the timing delays
-  wire [3:0] cvt_time;
+  wire [3:0] cnv_time;
   wire [3:0] sck_time;
-  assign cvt_time=timing[7:4];
+  assign cnv_time=timing[7:4];
   assign sck_time=timing[3:0];
   
   integer clk_counter=0;    // counts clock cycles
   integer nread;			// number of bits read
+  
+  reg synch_cnv = 0;		// synchronous convert signal (active HI)
+  // Assert cvt promtly when a trigger comes (active LO)
+  assign cnv = ~(synch_cnv | (trigger&(state==READY)));
+  
+  // Synchronous procedural block
   always @(posedge clk) begin
     case(state)
-      IDLE: begin
-        cnv=1;				// Initialize everything
-        sck=0;
+      READY: begin
+        synch_cnv = 0;
         clk_counter=0;
         nread = 0;			// number of bits read
-        if((last_trigger==0)&&(trigger==1))  // wait for trigger to change state
+        if((last_trigger==0)&&(trigger==1)) begin // wait for trigger to change state
+          synch_cnv=1;
           state=CNV;
+        end
       end
       CNV: begin			// Wait here for convert to finish
-        cnv=0;				// Issue a convert
         clk_counter=clk_counter+1;
-        if(clk_counter>=cvt_time) begin
+        if(clk_counter>=cnv_time) begin
           clk_counter=0;
           state=SCK_LO;
         end
@@ -98,9 +115,9 @@ module LTC2324_read #(parameter LENGTH=16) (
       end
       DONE: begin
         sck=0;
-        cnv=1;
+        synch_cnv=0;
         if((last_arm==0)&&(arm==1)) 
-          state=IDLE;			// If arm received, wait for a trigger
+          state=READY;			// If arm received, wait for a trigger
       end
     endcase
     last_arm=arm;
