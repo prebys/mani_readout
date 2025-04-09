@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Wed Apr  9 09:26:10 2025
+//Date        : Wed Apr  9 13:16:52 2025
 //Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 //Command     : generate_target mani_readout.bd
 //Design      : mani_readout

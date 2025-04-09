@@ -17,8 +17,11 @@ module LTC2324_read #(parameter LENGTH=16) (
   input clk,			         // Onboard clock
   input [7:0] timing,			 // time delays 
                                  // timing[7:4] - clock cycles to hold cnv LO 
-                                 //               before first valid bit
-                                 // timing [3:0] - clock cycles for SCK_LO and SCK)_HI
+                                 //               before first valid bit. This
+                                 //               will be shifted by 2 bits, so 
+                                 //               it's in units of 40ns
+                                 // timing [3:0] - clock cycles for SCK_LO  
+                                 //               and SCK_HI, in units of 10 ns
   input [7:0] control,		     // Control word
                                  //    control[0] - arm (asserted after read)
                                  //    control[1] - soft trigger
@@ -57,9 +60,9 @@ module LTC2324_read #(parameter LENGTH=16) (
   assign trigger=control[1]|(ext_trigger^ext_polarity);
  
   // set up the timing delays
-  wire [3:0] cnv_time;
+  wire [5:0] cnv_time;
   wire [3:0] sck_time;
-  assign cnv_time=timing[7:4];
+  assign cnv_time={timing[7:4],2'b00};
   assign sck_time=timing[3:0];
   
   integer clk_counter=0;    // counts clock cycles

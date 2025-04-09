@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Wed Apr  9 13:18:49 2025
+-- Date        : Wed Apr  9 13:18:46 2025
 -- Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim {g:/My
---               Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+--               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ mani_readout_LTC2324_read_0_0_sim_netlist.vhdl
 -- Design      : mani_readout_LTC2324_read_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity mani_readout_LTC2324_read_0_0_LTC2324_read is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_LTC2324_read is
   port (
     Q : out STD_LOGIC_VECTOR ( 0 to 0 );
     data : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -28,11 +28,9 @@ entity mani_readout_LTC2324_read_0_0_LTC2324_read is
     ext_trigger : in STD_LOGIC;
     timing : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mani_readout_LTC2324_read_0_0_LTC2324_read : entity is "LTC2324_read";
-end mani_readout_LTC2324_read_0_0_LTC2324_read;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_LTC2324_read;
 
-architecture STRUCTURE of mani_readout_LTC2324_read_0_0_LTC2324_read is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_LTC2324_read is
   signal \FSM_onehot_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[0]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[0]_i_3_n_0\ : STD_LOGIC;
@@ -3287,7 +3285,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity mani_readout_LTC2324_read_0_0 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   port (
     clk : in STD_LOGIC;
     timing : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -3301,24 +3299,24 @@ entity mani_readout_LTC2324_read_0_0 is
     sdo : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of mani_readout_LTC2324_read_0_0 : entity is true;
+  attribute NotValidForBitStream of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of mani_readout_LTC2324_read_0_0 : entity is "mani_readout_LTC2324_read_0_0,LTC2324_read,{}";
+  attribute CHECK_LICENSE_TYPE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "mani_readout_LTC2324_read_0_0,LTC2324_read,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of mani_readout_LTC2324_read_0_0 : entity is "yes";
+  attribute DowngradeIPIdentifiedWarnings of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "yes";
   attribute IP_DEFINITION_SOURCE : string;
-  attribute IP_DEFINITION_SOURCE of mani_readout_LTC2324_read_0_0 : entity is "module_ref";
+  attribute IP_DEFINITION_SOURCE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "module_ref";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of mani_readout_LTC2324_read_0_0 : entity is "LTC2324_read,Vivado 2023.2";
-end mani_readout_LTC2324_read_0_0;
+  attribute X_CORE_INFO of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "LTC2324_read,Vivado 2023.2";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
 
-architecture STRUCTURE of mani_readout_LTC2324_read_0_0 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
   attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN mani_readout_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
 begin
-inst: entity work.mani_readout_LTC2324_read_0_0_LTC2324_read
+inst: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_LTC2324_read
      port map (
       Q(0) => state(2),
       clk => clk,

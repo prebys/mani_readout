@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Apr  9 09:30:14 2025
+| Date             : Wed Apr  9 13:22:26 2025
 | Host             : CL-Prebys-LT running 64-bit major release  (build 9200)
 | Command          : report_power -file mani_readout_wrapper_power_routed.rpt -pb mani_readout_wrapper_power_summary_routed.pb -rpx mani_readout_wrapper_power_routed.rpx
 | Design           : mani_readout_wrapper
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 1.405        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.268        |
+| Dynamic (W)              | 1.267        |
 | Device Static (W)        | 0.138        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 68.8         |
@@ -52,14 +52,14 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.007 |        3 |       --- |             --- |
+| Clocks                  |     0.006 |        3 |       --- |             --- |
 | Slice Logic             |     0.002 |     2842 |       --- |             --- |
 |   LUT as Logic          |     0.001 |      911 |     53200 |            1.71 |
 |   CARRY4                |    <0.001 |       74 |     13300 |            0.56 |
 |   Register              |    <0.001 |     1285 |    106400 |            1.21 |
 |   LUT as Shift Register |    <0.001 |       62 |     17400 |            0.36 |
 |   Others                |     0.000 |      233 |       --- |             --- |
-| Signals                 |     0.002 |     2103 |       --- |             --- |
+| Signals                 |     0.002 |     2105 |       --- |             --- |
 | I/O                     |     0.002 |        8 |       125 |            6.40 |
 | PS7                     |     1.256 |        1 |       --- |             --- |
 | Static Power            |     0.138 |          |           |                 |
@@ -149,13 +149,13 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| mani_readout_wrapper     |     1.268 |
-|   mani_readout_i         |     1.266 |
+| mani_readout_wrapper     |     1.267 |
+|   mani_readout_i         |     1.265 |
 |     data                 |     0.001 |
 |       U0                 |     0.001 |
 |     processing_system7_0 |     1.256 |
 |       inst               |     1.256 |
-|     ps7_0_axi_periph     |     0.006 |
+|     ps7_0_axi_periph     |     0.005 |
 |       s00_couplers       |     0.004 |
 |       xbar               |     0.001 |
 +--------------------------+-----------+
