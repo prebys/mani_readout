@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "mani_readout_axi_gpio_0_2",
-    "cell_name": "data",
+    "cell_name": "data1",
     "component_reference": "xilinx.com:ip:axi_gpio:2.0",
     "ip_revision": "31",
     "gen_directory": "../../../../../../mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_2",

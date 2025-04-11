@@ -42,4 +42,25 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readou
 # IP: bd/mani_readout/ip/mani_readout_auto_pc_0/mani_readout_auto_pc_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_auto_pc_0 || ORIG_REF_NAME==mani_readout_auto_pc_0} -quiet] -quiet
 
+# IP: bd/mani_readout/ip/mani_readout_data1_0/mani_readout_data1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_data1_0 || ORIG_REF_NAME==mani_readout_data1_0} -quiet] -quiet
+
+# IP: bd/mani_readout/ip/mani_readout_data2_0/mani_readout_data2_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_data2_0 || ORIG_REF_NAME==mani_readout_data2_0} -quiet] -quiet
+
+# IP: bd/mani_readout/ip/mani_readout_data3_0/mani_readout_data3_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_data3_0 || ORIG_REF_NAME==mani_readout_data3_0} -quiet] -quiet
+
+# IP: bd/mani_readout/ip/mani_readout_xlslice_0_0/mani_readout_xlslice_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_xlslice_0_0 || ORIG_REF_NAME==mani_readout_xlslice_0_0} -quiet] -quiet
+
+# IP: bd/mani_readout/ip/mani_readout_xlslice_4_1/mani_readout_xlslice_4_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_xlslice_4_1 || ORIG_REF_NAME==mani_readout_xlslice_4_1} -quiet] -quiet
+
+# IP: bd/mani_readout/ip/mani_readout_xlslice_2_0/mani_readout_xlslice_2_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_xlslice_2_0 || ORIG_REF_NAME==mani_readout_xlslice_2_0} -quiet] -quiet
+
+# IP: bd/mani_readout/ip/mani_readout_xlslice_3_0/mani_readout_xlslice_3_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==mani_readout_xlslice_3_0 || ORIG_REF_NAME==mani_readout_xlslice_3_0} -quiet] -quiet
+
 # XDC: g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/mani_readout_ooc.xdc

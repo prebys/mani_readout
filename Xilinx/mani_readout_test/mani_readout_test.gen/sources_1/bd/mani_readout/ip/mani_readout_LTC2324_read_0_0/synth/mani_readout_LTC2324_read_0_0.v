@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "LTC2324_read,Vivado 2023.2" *)
 (* CHECK_LICENSE_TYPE = "mani_readout_LTC2324_read_0_0,LTC2324_read,{}" *)
-(* CORE_GENERATION_INFO = "mani_readout_LTC2324_read_0_0,LTC2324_read,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=LTC2324_read,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,LENGTH=16}" *)
+(* CORE_GENERATION_INFO = "mani_readout_LTC2324_read_0_0,LTC2324_read,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=LTC2324_read,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,LENGTH=64}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mani_readout_LTC2324_read_0_0 (
@@ -74,7 +74,7 @@ input wire clk;
 input wire [7 : 0] timing;
 input wire [7 : 0] control;
 input wire ext_trigger;
-output wire [15 : 0] data;
+output wire [63 : 0] data;
 output wire [2 : 0] state;
 output wire cnv;
 output wire sck;
@@ -82,7 +82,7 @@ input wire clkout;
 input wire sdo;
 
   LTC2324_read #(
-    .LENGTH(16)
+    .LENGTH(64)
   ) inst (
     .clk(clk),
     .timing(timing),

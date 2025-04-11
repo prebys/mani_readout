@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Apr  9 13:18:49 2025
+// Date        : Fri Apr 11 12:30:52 2025
 // Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {g:/My
 //               Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_sim_netlist.v}
@@ -31,7 +31,7 @@ module mani_readout_LTC2324_read_0_0
   input [7:0]timing;
   input [7:0]control;
   input ext_trigger;
-  output [15:0]data;
+  output [63:0]data;
   output [2:0]state;
   output cnv;
   output sck;
@@ -41,7 +41,7 @@ module mani_readout_LTC2324_read_0_0
   wire clk;
   wire cnv;
   wire [7:0]control;
-  wire [15:0]data;
+  wire [63:0]data;
   wire ext_trigger;
   wire sck;
   wire sdo;
@@ -74,7 +74,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     ext_trigger,
     timing);
   output [0:0]Q;
-  output [15:0]data;
+  output [63:0]data;
   output cnv;
   output [1:0]state;
   output sck;
@@ -289,14 +289,14 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire \clk_counter_reg_n_0_[9] ;
   wire cnv;
   wire [2:0]control;
-  wire [15:0]data;
-  wire \data[15]_i_1_n_0 ;
-  wire \data[15]_i_2_n_0 ;
-  wire \data[15]_i_3_n_0 ;
-  wire \data[15]_i_4_n_0 ;
-  wire \data[15]_i_5_n_0 ;
-  wire \data[15]_i_6_n_0 ;
-  wire \data[15]_i_7_n_0 ;
+  wire [63:0]data;
+  wire \data[63]_i_1_n_0 ;
+  wire \data[63]_i_2_n_0 ;
+  wire \data[63]_i_3_n_0 ;
+  wire \data[63]_i_4_n_0 ;
+  wire \data[63]_i_5_n_0 ;
+  wire \data[63]_i_6_n_0 ;
+  wire \data[63]_i_7_n_0 ;
   wire ext_trigger;
   wire i__carry__0_i_1__0_n_0;
   wire i__carry__0_i_1_n_0;
@@ -331,11 +331,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire i__carry__1_i_5_n_1;
   wire i__carry__1_i_5_n_2;
   wire i__carry__1_i_5_n_3;
-  wire i__carry__1_i_6__0_n_0;
   wire i__carry__1_i_6_n_0;
-  wire i__carry__1_i_6_n_1;
-  wire i__carry__1_i_6_n_2;
-  wire i__carry__1_i_6_n_3;
   wire i__carry__1_i_7_n_0;
   wire i__carry__1_i_8_n_0;
   wire i__carry__2_i_1__0_n_2;
@@ -343,7 +339,6 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire i__carry__2_i_1_n_0;
   wire i__carry__2_i_2__0_n_0;
   wire i__carry__2_i_2_n_0;
-  wire i__carry__2_i_3__0_n_0;
   wire i__carry__2_i_3_n_0;
   wire i__carry__2_i_4_n_0;
   wire i__carry__2_i_5_n_0;
@@ -375,6 +370,10 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire i__carry_i_8__0_n_2;
   wire i__carry_i_8__0_n_3;
   wire i__carry_i_8_n_0;
+  wire i__carry_i_9_n_0;
+  wire i__carry_i_9_n_1;
+  wire i__carry_i_9_n_2;
+  wire i__carry_i_9_n_3;
   wire last_arm;
   wire last_trigger;
   wire \nread[0]_i_1_n_0 ;
@@ -443,7 +442,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire \nread_reg[8]_i_1_n_5 ;
   wire \nread_reg[8]_i_1_n_6 ;
   wire \nread_reg[8]_i_1_n_7 ;
-  wire [31:4]p_0_in;
+  wire [31:6]p_0_in;
   wire sck;
   wire sck_i_1_n_0;
   wire sdo;
@@ -456,7 +455,6 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire \state1_inferred__0/i__carry__1_n_1 ;
   wire \state1_inferred__0/i__carry__1_n_2 ;
   wire \state1_inferred__0/i__carry__1_n_3 ;
-  wire \state1_inferred__0/i__carry__2_n_2 ;
   wire \state1_inferred__0/i__carry__2_n_3 ;
   wire \state1_inferred__0/i__carry_n_0 ;
   wire \state1_inferred__0/i__carry_n_1 ;
@@ -479,12 +477,13 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   wire [3:3]NLW_clk_counter2_carry__6_O_UNCONNECTED;
   wire [3:2]NLW_i__carry__2_i_1__0_CO_UNCONNECTED;
   wire [3:3]NLW_i__carry__2_i_1__0_O_UNCONNECTED;
-  wire [2:0]NLW_i__carry_i_6_O_UNCONNECTED;
+  wire [0:0]NLW_i__carry_i_6_O_UNCONNECTED;
+  wire [3:0]NLW_i__carry_i_9_O_UNCONNECTED;
   wire [3:3]\NLW_nread_reg[28]_i_1_CO_UNCONNECTED ;
   wire [3:0]\NLW_state1_inferred__0/i__carry_O_UNCONNECTED ;
   wire [3:0]\NLW_state1_inferred__0/i__carry__0_O_UNCONNECTED ;
   wire [3:0]\NLW_state1_inferred__0/i__carry__1_O_UNCONNECTED ;
-  wire [3:2]\NLW_state1_inferred__0/i__carry__2_CO_UNCONNECTED ;
+  wire [3:1]\NLW_state1_inferred__0/i__carry__2_CO_UNCONNECTED ;
   wire [3:0]\NLW_state1_inferred__0/i__carry__2_O_UNCONNECTED ;
 
   LUT6 #(
@@ -500,7 +499,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT6 #(
     .INIT(64'hFF404040FF40FF40)) 
     \FSM_onehot_state[0]_i_2 
-       (.I0(\state1_inferred__0/i__carry__2_n_2 ),
+       (.I0(\state1_inferred__0/i__carry__2_n_3 ),
         .I1(\FSM_onehot_state_reg_n_0_[4] ),
         .I2(\clk_counter1_inferred__0/i__carry__2_n_0 ),
         .I3(Q),
@@ -536,7 +535,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
        (.I0(\FSM_onehot_state_reg_n_0_[3] ),
         .I1(clk_counter1_carry__2_n_0),
         .I2(\FSM_onehot_state_reg_n_0_[2] ),
-        .I3(\state1_inferred__0/i__carry__2_n_2 ),
+        .I3(\state1_inferred__0/i__carry__2_n_3 ),
         .I4(\FSM_onehot_state_reg_n_0_[4] ),
         .I5(\clk_counter1_inferred__0/i__carry__2_n_0 ),
         .O(\FSM_onehot_state[3]_i_1_n_0 ));
@@ -848,7 +847,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CYINIT(1'b0),
         .DI({i__carry__1_i_1_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}),
         .O(\NLW_clk_counter1_inferred__0/i__carry__1_O_UNCONNECTED [3:0]),
-        .S({i__carry__1_i_5__0_n_0,i__carry__1_i_6__0_n_0,i__carry__1_i_7_n_0,i__carry__1_i_8_n_0}));
+        .S({i__carry__1_i_5__0_n_0,i__carry__1_i_6_n_0,i__carry__1_i_7_n_0,i__carry__1_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \clk_counter1_inferred__0/i__carry__2 
        (.CI(\clk_counter1_inferred__0/i__carry__1_n_0 ),
@@ -1460,77 +1459,77 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .O(cnv));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
-    \data[15]_i_1 
-       (.I0(\data[15]_i_2_n_0 ),
-        .I1(\data[15]_i_3_n_0 ),
-        .I2(\data[15]_i_4_n_0 ),
-        .I3(\data[15]_i_5_n_0 ),
-        .I4(\data[15]_i_6_n_0 ),
-        .I5(\data[15]_i_7_n_0 ),
-        .O(\data[15]_i_1_n_0 ));
+    \data[63]_i_1 
+       (.I0(\data[63]_i_2_n_0 ),
+        .I1(\data[63]_i_3_n_0 ),
+        .I2(\data[63]_i_4_n_0 ),
+        .I3(\data[63]_i_5_n_0 ),
+        .I4(\data[63]_i_6_n_0 ),
+        .I5(\data[63]_i_7_n_0 ),
+        .O(\data[63]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \data[15]_i_2 
+    \data[63]_i_2 
        (.I0(\clk_counter_reg_n_0_[23] ),
         .I1(\clk_counter_reg_n_0_[24] ),
         .I2(\clk_counter_reg_n_0_[21] ),
         .I3(\clk_counter_reg_n_0_[22] ),
         .I4(\clk_counter_reg_n_0_[26] ),
         .I5(\clk_counter_reg_n_0_[25] ),
-        .O(\data[15]_i_2_n_0 ));
+        .O(\data[63]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000000100000000)) 
-    \data[15]_i_3 
+    \data[63]_i_3 
        (.I0(\clk_counter_reg_n_0_[29] ),
         .I1(\clk_counter_reg_n_0_[30] ),
         .I2(\clk_counter_reg_n_0_[27] ),
         .I3(\clk_counter_reg_n_0_[28] ),
         .I4(\clk_counter_reg_n_0_[31] ),
         .I5(\FSM_onehot_state_reg_n_0_[4] ),
-        .O(\data[15]_i_3_n_0 ));
+        .O(\data[63]_i_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'h01)) 
-    \data[15]_i_4 
+    \data[63]_i_4 
        (.I0(\clk_counter_reg_n_0_[2] ),
         .I1(\clk_counter_reg_n_0_[1] ),
         .I2(\clk_counter_reg_n_0_[0] ),
-        .O(\data[15]_i_4_n_0 ));
+        .O(\data[63]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \data[15]_i_5 
+    \data[63]_i_5 
        (.I0(\clk_counter_reg_n_0_[5] ),
         .I1(\clk_counter_reg_n_0_[6] ),
         .I2(\clk_counter_reg_n_0_[3] ),
         .I3(\clk_counter_reg_n_0_[4] ),
         .I4(\clk_counter_reg_n_0_[8] ),
         .I5(\clk_counter_reg_n_0_[7] ),
-        .O(\data[15]_i_5_n_0 ));
+        .O(\data[63]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \data[15]_i_6 
+    \data[63]_i_6 
        (.I0(\clk_counter_reg_n_0_[17] ),
         .I1(\clk_counter_reg_n_0_[18] ),
         .I2(\clk_counter_reg_n_0_[15] ),
         .I3(\clk_counter_reg_n_0_[16] ),
         .I4(\clk_counter_reg_n_0_[20] ),
         .I5(\clk_counter_reg_n_0_[19] ),
-        .O(\data[15]_i_6_n_0 ));
+        .O(\data[63]_i_6_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \data[15]_i_7 
+    \data[63]_i_7 
        (.I0(\clk_counter_reg_n_0_[11] ),
         .I1(\clk_counter_reg_n_0_[12] ),
         .I2(\clk_counter_reg_n_0_[9] ),
         .I3(\clk_counter_reg_n_0_[10] ),
         .I4(\clk_counter_reg_n_0_[14] ),
         .I5(\clk_counter_reg_n_0_[13] ),
-        .O(\data[15]_i_7_n_0 ));
+        .O(\data[63]_i_7_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \data_reg[0] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(sdo),
         .Q(data[0]),
         .R(1'b0));
@@ -1538,7 +1537,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[10] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[9]),
         .Q(data[10]),
         .R(1'b0));
@@ -1546,7 +1545,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[11] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[10]),
         .Q(data[11]),
         .R(1'b0));
@@ -1554,7 +1553,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[12] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[11]),
         .Q(data[12]),
         .R(1'b0));
@@ -1562,7 +1561,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[13] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[12]),
         .Q(data[13]),
         .R(1'b0));
@@ -1570,7 +1569,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[14] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[13]),
         .Q(data[14]),
         .R(1'b0));
@@ -1578,55 +1577,439 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[15] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[14]),
         .Q(data[15]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \data_reg[16] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[15]),
+        .Q(data[16]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[17] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[16]),
+        .Q(data[17]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[18] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[17]),
+        .Q(data[18]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[19] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[18]),
+        .Q(data[19]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \data_reg[1] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[0]),
         .Q(data[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \data_reg[20] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[19]),
+        .Q(data[20]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[21] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[20]),
+        .Q(data[21]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[22] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[21]),
+        .Q(data[22]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[23] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[22]),
+        .Q(data[23]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[24] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[23]),
+        .Q(data[24]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[25] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[24]),
+        .Q(data[25]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[26] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[25]),
+        .Q(data[26]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[27] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[26]),
+        .Q(data[27]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[28] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[27]),
+        .Q(data[28]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[29] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[28]),
+        .Q(data[29]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \data_reg[2] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[1]),
         .Q(data[2]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \data_reg[30] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[29]),
+        .Q(data[30]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[31] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[30]),
+        .Q(data[31]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[32] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[31]),
+        .Q(data[32]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[33] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[32]),
+        .Q(data[33]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[34] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[33]),
+        .Q(data[34]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[35] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[34]),
+        .Q(data[35]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[36] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[35]),
+        .Q(data[36]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[37] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[36]),
+        .Q(data[37]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[38] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[37]),
+        .Q(data[38]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[39] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[38]),
+        .Q(data[39]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \data_reg[3] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[2]),
         .Q(data[3]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \data_reg[40] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[39]),
+        .Q(data[40]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[41] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[40]),
+        .Q(data[41]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[42] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[41]),
+        .Q(data[42]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[43] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[42]),
+        .Q(data[43]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[44] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[43]),
+        .Q(data[44]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[45] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[44]),
+        .Q(data[45]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[46] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[45]),
+        .Q(data[46]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[47] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[46]),
+        .Q(data[47]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[48] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[47]),
+        .Q(data[48]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[49] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[48]),
+        .Q(data[49]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \data_reg[4] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[3]),
         .Q(data[4]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \data_reg[50] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[49]),
+        .Q(data[50]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[51] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[50]),
+        .Q(data[51]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[52] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[51]),
+        .Q(data[52]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[53] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[52]),
+        .Q(data[53]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[54] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[53]),
+        .Q(data[54]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[55] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[54]),
+        .Q(data[55]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[56] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[55]),
+        .Q(data[56]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[57] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[56]),
+        .Q(data[57]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[58] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[57]),
+        .Q(data[58]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[59] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[58]),
+        .Q(data[59]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \data_reg[5] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[4]),
         .Q(data[5]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
+    \data_reg[60] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[59]),
+        .Q(data[60]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[61] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[60]),
+        .Q(data[61]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[62] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[61]),
+        .Q(data[62]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \data_reg[63] 
+       (.C(clk),
+        .CE(\data[63]_i_1_n_0 ),
+        .D(data[62]),
+        .Q(data[63]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
     \data_reg[6] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[5]),
         .Q(data[6]),
         .R(1'b0));
@@ -1634,7 +2017,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[7] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[6]),
         .Q(data[7]),
         .R(1'b0));
@@ -1642,7 +2025,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[8] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[7]),
         .Q(data[8]),
         .R(1'b0));
@@ -1650,7 +2033,7 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
     .INIT(1'b0)) 
     \data_reg[9] 
        (.C(clk),
-        .CE(\data[15]_i_1_n_0 ),
+        .CE(\data[63]_i_1_n_0 ),
         .D(data[8]),
         .Q(data[9]),
         .R(1'b0));
@@ -1663,8 +2046,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_1__0
-       (.I0(p_0_in[18]),
-        .I1(p_0_in[19]),
+       (.I0(p_0_in[20]),
+        .I1(p_0_in[21]),
         .O(i__carry__0_i_1__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1675,8 +2058,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_2__0
-       (.I0(p_0_in[16]),
-        .I1(p_0_in[17]),
+       (.I0(p_0_in[18]),
+        .I1(p_0_in[19]),
         .O(i__carry__0_i_2__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1687,8 +2070,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_3__0
-       (.I0(p_0_in[14]),
-        .I1(p_0_in[15]),
+       (.I0(p_0_in[16]),
+        .I1(p_0_in[17]),
         .O(i__carry__0_i_3__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1699,12 +2082,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_4__0
-       (.I0(p_0_in[12]),
-        .I1(p_0_in[13]),
+       (.I0(p_0_in[14]),
+        .I1(p_0_in[15]),
         .O(i__carry__0_i_4__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__0_i_5
-       (.CI(i__carry__0_i_6_n_0),
+       (.CI(i__carry_i_8__0_n_0),
         .CO({i__carry__0_i_5_n_0,i__carry__0_i_5_n_1,i__carry__0_i_5_n_2,i__carry__0_i_5_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
@@ -1718,12 +2101,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .O(i__carry__0_i_5__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__0_i_6
-       (.CI(i__carry_i_8__0_n_0),
+       (.CI(i__carry__0_i_5_n_0),
         .CO({i__carry__0_i_6_n_0,i__carry__0_i_6_n_1,i__carry__0_i_6_n_2,i__carry__0_i_6_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in[16:13]),
-        .S(nread_reg[16:13]));
+        .O(p_0_in[24:21]),
+        .S(nread_reg[24:21]));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_6__0
@@ -1751,8 +2134,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_1__0
-       (.I0(p_0_in[26]),
-        .I1(p_0_in[27]),
+       (.I0(p_0_in[28]),
+        .I1(p_0_in[29]),
         .O(i__carry__1_i_1__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1763,8 +2146,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_2__0
-       (.I0(p_0_in[24]),
-        .I1(p_0_in[25]),
+       (.I0(p_0_in[26]),
+        .I1(p_0_in[27]),
         .O(i__carry__1_i_2__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1775,8 +2158,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_3__0
-       (.I0(p_0_in[22]),
-        .I1(p_0_in[23]),
+       (.I0(p_0_in[24]),
+        .I1(p_0_in[25]),
         .O(i__carry__1_i_3__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1787,12 +2170,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_4__0
-       (.I0(p_0_in[20]),
-        .I1(p_0_in[21]),
+       (.I0(p_0_in[22]),
+        .I1(p_0_in[23]),
         .O(i__carry__1_i_4__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__1_i_5
-       (.CI(i__carry__1_i_6_n_0),
+       (.CI(i__carry__0_i_6_n_0),
         .CO({i__carry__1_i_5_n_0,i__carry__1_i_5_n_1,i__carry__1_i_5_n_2,i__carry__1_i_5_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
@@ -1804,20 +2187,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
        (.I0(clk_counter2_carry__4_n_6),
         .I1(clk_counter2_carry__4_n_5),
         .O(i__carry__1_i_5__0_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 i__carry__1_i_6
-       (.CI(i__carry__0_i_5_n_0),
-        .CO({i__carry__1_i_6_n_0,i__carry__1_i_6_n_1,i__carry__1_i_6_n_2,i__carry__1_i_6_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in[24:21]),
-        .S(nread_reg[24:21]));
   LUT2 #(
     .INIT(4'h1)) 
-    i__carry__1_i_6__0
+    i__carry__1_i_6
        (.I0(clk_counter2_carry__3_n_4),
         .I1(clk_counter2_carry__4_n_7),
-        .O(i__carry__1_i_6__0_n_0));
+        .O(i__carry__1_i_6_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_7
@@ -1863,12 +2238,6 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .I1(clk_counter2_carry__5_n_5),
         .O(i__carry__2_i_3_n_0));
   LUT2 #(
-    .INIT(4'h1)) 
-    i__carry__2_i_3__0
-       (.I0(p_0_in[28]),
-        .I1(p_0_in[29]),
-        .O(i__carry__2_i_3__0_n_0));
-  LUT2 #(
     .INIT(4'hE)) 
     i__carry__2_i_4
        (.I0(clk_counter2_carry__4_n_4),
@@ -1907,8 +2276,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_1__0
-       (.I0(p_0_in[4]),
-        .I1(p_0_in[5]),
+       (.I0(p_0_in[6]),
+        .I1(p_0_in[7]),
         .O(i__carry_i_1__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -1919,8 +2288,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_2__0
-       (.I0(p_0_in[10]),
-        .I1(p_0_in[11]),
+       (.I0(p_0_in[12]),
+        .I1(p_0_in[13]),
         .O(i__carry_i_2__0_n_0));
   LUT4 #(
     .INIT(16'h22B2)) 
@@ -1933,8 +2302,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_3__0
-       (.I0(p_0_in[8]),
-        .I1(p_0_in[9]),
+       (.I0(p_0_in[10]),
+        .I1(p_0_in[11]),
         .O(i__carry_i_3__0_n_0));
   LUT4 #(
     .INIT(16'h222B)) 
@@ -1947,14 +2316,14 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_4__0
-       (.I0(p_0_in[6]),
-        .I1(p_0_in[7]),
+       (.I0(p_0_in[8]),
+        .I1(p_0_in[9]),
         .O(i__carry_i_4__0_n_0));
   LUT2 #(
     .INIT(4'h2)) 
     i__carry_i_5
-       (.I0(p_0_in[4]),
-        .I1(p_0_in[5]),
+       (.I0(p_0_in[6]),
+        .I1(p_0_in[7]),
         .O(i__carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -1964,12 +2333,12 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .O(i__carry_i_5__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry_i_6
-       (.CI(1'b0),
+       (.CI(i__carry_i_9_n_0),
         .CO({i__carry_i_6_n_0,i__carry_i_6_n_1,i__carry_i_6_n_2,i__carry_i_6_n_3}),
-        .CYINIT(nread_reg[0]),
+        .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({p_0_in[4],NLW_i__carry_i_6_O_UNCONNECTED[2:0]}),
-        .S(nread_reg[4:1]));
+        .O({p_0_in[8:6],NLW_i__carry_i_6_O_UNCONNECTED[0]}),
+        .S(nread_reg[8:5]));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_6__0
@@ -1990,8 +2359,8 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CO({i__carry_i_7__0_n_0,i__carry_i_7__0_n_1,i__carry_i_7__0_n_2,i__carry_i_7__0_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in[8:5]),
-        .S(nread_reg[8:5]));
+        .O(p_0_in[12:9]),
+        .S(nread_reg[12:9]));
   LUT4 #(
     .INIT(16'h0990)) 
     i__carry_i_8
@@ -2006,8 +2375,16 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
         .CO({i__carry_i_8__0_n_0,i__carry_i_8__0_n_1,i__carry_i_8__0_n_2,i__carry_i_8__0_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in[12:9]),
-        .S(nread_reg[12:9]));
+        .O(p_0_in[16:13]),
+        .S(nread_reg[16:13]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry_i_9
+       (.CI(1'b0),
+        .CO({i__carry_i_9_n_0,i__carry_i_9_n_1,i__carry_i_9_n_2,i__carry_i_9_n_3}),
+        .CYINIT(nread_reg[0]),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(NLW_i__carry_i_9_O_UNCONNECTED[3:0]),
+        .S(nread_reg[4:1]));
   FDRE #(
     .INIT(1'b0)) 
     last_arm_reg
@@ -2342,11 +2719,11 @@ module mani_readout_LTC2324_read_0_0_LTC2324_read
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \state1_inferred__0/i__carry__2 
        (.CI(\state1_inferred__0/i__carry__1_n_0 ),
-        .CO({\NLW_state1_inferred__0/i__carry__2_CO_UNCONNECTED [3:2],\state1_inferred__0/i__carry__2_n_2 ,\state1_inferred__0/i__carry__2_n_3 }),
+        .CO({\NLW_state1_inferred__0/i__carry__2_CO_UNCONNECTED [3:1],\state1_inferred__0/i__carry__2_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,p_0_in[31],1'b0}),
+        .DI({1'b0,1'b0,1'b0,p_0_in[31]}),
         .O(\NLW_state1_inferred__0/i__carry__2_O_UNCONNECTED [3:0]),
-        .S({1'b0,1'b0,i__carry__2_i_2__0_n_0,i__carry__2_i_3__0_n_0}));
+        .S({1'b0,1'b0,1'b0,i__carry__2_i_2__0_n_0}));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'hE)) 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Apr  9 13:22:26 2025
+| Date             : Fri Apr 11 12:34:58 2025
 | Host             : CL-Prebys-LT running 64-bit major release  (build 9200)
 | Command          : report_power -file mani_readout_wrapper_power_routed.rpt -pb mani_readout_wrapper_power_summary_routed.pb -rpx mani_readout_wrapper_power_routed.rpx
 | Design           : mani_readout_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.405        |
+| Total On-Chip Power (W)  | 1.407        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.267        |
+| Dynamic (W)              | 1.270        |
 | Device Static (W)        | 0.138        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 68.8         |
@@ -52,18 +52,18 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.006 |        3 |       --- |             --- |
-| Slice Logic             |     0.002 |     2842 |       --- |             --- |
-|   LUT as Logic          |     0.001 |      911 |     53200 |            1.71 |
+| Clocks                  |     0.008 |        3 |       --- |             --- |
+| Slice Logic             |     0.002 |     3796 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     1220 |     53200 |            2.29 |
 |   CARRY4                |    <0.001 |       74 |     13300 |            0.56 |
-|   Register              |    <0.001 |     1285 |    106400 |            1.21 |
+|   Register              |    <0.001 |     1865 |    106400 |            1.75 |
 |   LUT as Shift Register |    <0.001 |       62 |     17400 |            0.36 |
-|   Others                |     0.000 |      233 |       --- |             --- |
-| Signals                 |     0.002 |     2105 |       --- |             --- |
-| I/O                     |     0.002 |        8 |       125 |            6.40 |
+|   Others                |     0.000 |      260 |       --- |             --- |
+| Signals                 |     0.002 |     2799 |       --- |             --- |
+| I/O                     |     0.001 |        8 |       125 |            6.40 |
 | PS7                     |     1.256 |        1 |       --- |             --- |
 | Static Power            |     0.138 |          |           |                 |
-| Total                   |     1.405 |          |           |                 |
+| Total                   |     1.407 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.023 |       0.010 |      0.013 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.026 |       0.013 |      0.013 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.014 |       0.000 |      0.014 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -149,10 +149,8 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| mani_readout_wrapper     |     1.267 |
-|   mani_readout_i         |     1.265 |
-|     data                 |     0.001 |
-|       U0                 |     0.001 |
+| mani_readout_wrapper     |     1.270 |
+|   mani_readout_i         |     1.268 |
 |     processing_system7_0 |     1.256 |
 |       inst               |     1.256 |
 |     ps7_0_axi_periph     |     0.005 |

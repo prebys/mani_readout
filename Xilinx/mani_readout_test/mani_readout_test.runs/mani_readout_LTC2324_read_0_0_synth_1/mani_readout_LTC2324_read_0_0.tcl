@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "mani_readout_LTC2324_read_0_0_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mref}}

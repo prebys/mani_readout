@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg400-1
 
@@ -112,6 +110,15 @@ set_property used_in_implementation false [get_files -all {{g:/My Drive/github/m
 set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_4/mani_readout_axi_gpio_0_4.xdc}}]
 set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xbar_1/mani_readout_xbar_1_ooc.xdc}}]
 set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_auto_pc_0/mani_readout_auto_pc_0_ooc.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data1_0/mani_readout_data1_0_board.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data1_0/mani_readout_data1_0_ooc.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data1_0/mani_readout_data1_0.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data2_0/mani_readout_data2_0_board.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data2_0/mani_readout_data2_0_ooc.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data2_0/mani_readout_data2_0.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data3_0/mani_readout_data3_0_board.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data3_0/mani_readout_data3_0_ooc.xdc}}]
+set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data3_0/mani_readout_data3_0.xdc}}]
 set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/mani_readout_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }

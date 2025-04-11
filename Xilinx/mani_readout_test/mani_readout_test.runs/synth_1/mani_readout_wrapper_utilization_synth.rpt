@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Apr  9 13:20:13 2025
+| Date         : Fri Apr 11 12:32:47 2025
 | Host         : CL-Prebys-LT running 64-bit major release  (build 9200)
 | Command      : report_utilization -file mani_readout_wrapper_utilization_synth.rpt -pb mani_readout_wrapper_utilization_synth.pb
 | Design       : mani_readout_wrapper
@@ -162,6 +162,9 @@ Warning! LUT value is adjusted to account for LUT combining.
 | mani_readout_xbar_1                 |    1 |
 | mani_readout_rst_ps7_0_100M_0       |    1 |
 | mani_readout_processing_system7_0_0 |    1 |
+| mani_readout_data3_0                |    1 |
+| mani_readout_data2_0                |    1 |
+| mani_readout_data1_0                |    1 |
 | mani_readout_axi_gpio_0_4           |    1 |
 | mani_readout_axi_gpio_0_3           |    1 |
 | mani_readout_axi_gpio_0_2           |    1 |

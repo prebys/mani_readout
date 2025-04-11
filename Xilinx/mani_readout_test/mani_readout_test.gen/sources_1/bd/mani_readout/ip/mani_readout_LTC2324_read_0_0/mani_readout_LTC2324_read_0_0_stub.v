@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Apr  9 13:18:49 2025
+// Date        : Fri Apr 11 12:30:52 2025
 // Host        : CL-Prebys-LT running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {g:/My
 //               Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_read_0_0/mani_readout_LTC2324_read_0_0_stub.v}
@@ -17,13 +17,13 @@
 (* X_CORE_INFO = "LTC2324_read,Vivado 2023.2" *)
 module mani_readout_LTC2324_read_0_0(clk, timing, control, ext_trigger, data, state, cnv, 
   sck, clkout, sdo)
-/* synthesis syn_black_box black_box_pad_pin="timing[7:0],control[7:0],ext_trigger,data[15:0],state[2:0],cnv,sck,clkout,sdo" */
+/* synthesis syn_black_box black_box_pad_pin="timing[7:0],control[7:0],ext_trigger,data[63:0],state[2:0],cnv,sck,clkout,sdo" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [7:0]timing;
   input [7:0]control;
   input ext_trigger;
-  output [15:0]data;
+  output [63:0]data;
   output [2:0]state;
   output cnv;
   output sck;

@@ -73,7 +73,7 @@ input wire clk;
 input wire [7 : 0] timing;
 input wire [7 : 0] control;
 input wire ext_trigger;
-output wire [15 : 0] data;
+output wire [63 : 0] data;
 output wire [2 : 0] state;
 output wire cnv;
 output wire sck;
@@ -81,7 +81,7 @@ input wire clkout;
 input wire sdo;
 
   LTC2324_read #(
-    .LENGTH(16)
+    .LENGTH(64)
   ) inst (
     .clk(clk),
     .timing(timing),

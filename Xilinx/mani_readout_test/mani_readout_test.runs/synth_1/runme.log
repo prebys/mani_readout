@@ -14,11 +14,11 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source mani_readout_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 477.594 ; gain = 184.156
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 478.668 ; gain = 183.293
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
-add_files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 493.070 ; gain = 15.477
+add_files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:11 . Memory (MB): peak = 493.395 ; gain = 14.727
 Command: read_checkpoint -auto_incremental -incremental {G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/utils_1/imports/synth_1/mani_readout_wrapper.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/utils_1/imports/synth_1/mani_readout_wrapper.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -31,28 +31,34 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 14476
+INFO: [Synth 8-7075] Helper process launched with PID 20180
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1369.328 ; gain = 439.297
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1369.664 ; gain = 439.859
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'mani_readout_wrapper' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/hdl/mani_readout_wrapper.v:13]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:673]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_LTC2324_dummy_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_LTC2324_dummy_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_LTC2324_dummy_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_LTC2324_dummy_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_LTC2324_read_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_LTC2324_read_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_LTC2324_read_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_LTC2324_read_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_2' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_2' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_2_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_3' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_3_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_3' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_3_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_processing_system7_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_processing_system7_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_processing_system7_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'mani_readout_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:988]
-WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'mani_readout_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:988]
-WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'mani_readout_processing_system7_0_0' has 65 connections declared, but only 63 given [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:988]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_ps7_0_axi_periph_1' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1241]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1069]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_LTC2324_dummy_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_LTC2324_dummy_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_LTC2324_dummy_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_LTC2324_dummy_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_LTC2324_read_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_LTC2324_read_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_LTC2324_read_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_LTC2324_read_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_2' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_2' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_data1_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_data1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_data1_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_data1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_data2_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_data2_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_data2_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_data2_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_data3_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_data3_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_data3_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_data3_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_3' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_3_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_3' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_3_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_processing_system7_0_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_processing_system7_0_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_processing_system7_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'mani_readout_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1502]
+WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'mani_readout_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1502]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'mani_readout_processing_system7_0_0' has 65 connections declared, but only 63 given [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1502]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_ps7_0_axi_periph_1' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1824]
 INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_11L2KBW' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_11L2KBW' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:13]
 INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_1421CQ4' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:145]
@@ -63,76 +69,165 @@ INFO: [Synth 8-6157] synthesizing module 'm03_couplers_imp_1GQD7HO' [g:/My Drive
 INFO: [Synth 8-6155] done synthesizing module 'm03_couplers_imp_1GQD7HO' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:409]
 INFO: [Synth 8-6157] synthesizing module 'm04_couplers_imp_1OZT4KS' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:541]
 INFO: [Synth 8-6155] done synthesizing module 'm04_couplers_imp_1OZT4KS' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:541]
-INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_16S31DR' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:2170]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_auto_pc_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_auto_pc_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_16S31DR' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:2170]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_xbar_1' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_xbar_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_xbar_1' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_xbar_1_stub.v:6]
-WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'mani_readout_xbar_1' is unconnected for instance 'xbar' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:2129]
-WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'mani_readout_xbar_1' is unconnected for instance 'xbar' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:2129]
-WARNING: [Synth 8-7023] instance 'xbar' of module 'mani_readout_xbar_1' has 40 connections declared, but only 38 given [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:2129]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_ps7_0_axi_periph_1' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1241]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_rst_ps7_0_100M_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_rst_ps7_0_100M_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_rst_ps7_0_100M_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_rst_ps7_0_100M_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1190]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1190]
-WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1190]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1190]
-WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'mani_readout_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1190]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_1' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_1' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_4' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_4_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_4' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-11288-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_4_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mani_readout' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:673]
+INFO: [Synth 8-6157] synthesizing module 'm05_couplers_imp_1KVJK4S' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:673]
+INFO: [Synth 8-6155] done synthesizing module 'm05_couplers_imp_1KVJK4S' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:673]
+INFO: [Synth 8-6157] synthesizing module 'm06_couplers_imp_1W4F7CC' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:805]
+INFO: [Synth 8-6155] done synthesizing module 'm06_couplers_imp_1W4F7CC' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:805]
+INFO: [Synth 8-6157] synthesizing module 'm07_couplers_imp_1QW6JVW' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:937]
+INFO: [Synth 8-6155] done synthesizing module 'm07_couplers_imp_1QW6JVW' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:937]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_16S31DR' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:3137]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_auto_pc_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_auto_pc_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_16S31DR' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:3137]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_xbar_1' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_xbar_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_xbar_1' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_xbar_1_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'mani_readout_xbar_1' is unconnected for instance 'xbar' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:3096]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'mani_readout_xbar_1' is unconnected for instance 'xbar' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:3096]
+WARNING: [Synth 8-7023] instance 'xbar' of module 'mani_readout_xbar_1' has 40 connections declared, but only 38 given [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:3096]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_ps7_0_axi_periph_1' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1824]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_rst_ps7_0_100M_0' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_rst_ps7_0_100M_0' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_rst_ps7_0_100M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1761]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1761]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1761]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'mani_readout_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1761]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'mani_readout_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1761]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_1' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_1' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_axi_gpio_0_4' [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_4_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_axi_gpio_0_4' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/.Xil/Vivado-9660-CL-Prebys-LT/realtime/mani_readout_axi_gpio_0_4_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_xlslice_0_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_0_0/synth/mani_readout_xlslice_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_3_xlslice' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_xlslice_0_0' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_0_0/synth/mani_readout_xlslice_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_xlslice_4_1' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_4_1/synth/mani_readout_xlslice_4_1.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_3_xlslice__parameterized0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice__parameterized0' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_xlslice_4_1' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_4_1/synth/mani_readout_xlslice_4_1.v:53]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_xlslice_2_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_2_0/synth/mani_readout_xlslice_2_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_3_xlslice__parameterized1' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice__parameterized1' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_xlslice_2_0' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_2_0/synth/mani_readout_xlslice_2_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'mani_readout_xlslice_3_0' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_3_0/synth/mani_readout_xlslice_3_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_3_xlslice__parameterized2' [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice__parameterized2' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout_xlslice_3_0' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xlslice_3_0/synth/mani_readout_xlslice_3_0.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'mani_readout' (0#1) [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/synth/mani_readout.v:1069]
 INFO: [Synth 8-6155] done synthesizing module 'mani_readout_wrapper' (0#1) [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/hdl/mani_readout_wrapper.v:13]
-WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_16S31DR is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_16S31DR is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ACLK in module m04_couplers_imp_1OZT4KS is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ARESETN in module m04_couplers_imp_1OZT4KS is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ACLK in module m04_couplers_imp_1OZT4KS is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ARESETN in module m04_couplers_imp_1OZT4KS is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ACLK in module m03_couplers_imp_1GQD7HO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ARESETN in module m03_couplers_imp_1GQD7HO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ACLK in module m03_couplers_imp_1GQD7HO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ARESETN in module m03_couplers_imp_1GQD7HO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ACLK in module m02_couplers_imp_1AXJZZG is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ARESETN in module m02_couplers_imp_1AXJZZG is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ACLK in module m02_couplers_imp_1AXJZZG is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ARESETN in module m02_couplers_imp_1AXJZZG is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ACLK in module m01_couplers_imp_1421CQ4 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ARESETN in module m01_couplers_imp_1421CQ4 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ACLK in module m01_couplers_imp_1421CQ4 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ARESETN in module m01_couplers_imp_1421CQ4 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ACLK in module m00_couplers_imp_11L2KBW is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M_ARESETN in module m00_couplers_imp_11L2KBW is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ACLK in module m00_couplers_imp_11L2KBW is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S_ARESETN in module m00_couplers_imp_11L2KBW is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M00_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M00_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M01_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M01_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M02_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M02_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M03_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M03_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M04_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M04_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S00_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S00_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[63] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[62] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[61] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[60] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[59] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[58] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[57] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[56] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[55] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[54] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[53] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[52] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[51] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[50] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[49] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[48] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[47] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[46] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[45] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[44] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[43] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[42] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[41] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[40] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[39] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[38] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[37] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[36] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[35] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[34] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[33] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[32] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[31] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[30] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[29] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[28] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[27] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[26] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[25] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[24] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[23] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[22] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[21] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[20] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[19] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[18] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[17] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[16] in module xlslice_v1_0_3_xlslice__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[63] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[62] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[61] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[60] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[59] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[58] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[57] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[56] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[55] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[54] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[53] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[52] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[51] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[50] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[49] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[48] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[47] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[46] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[45] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[44] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[43] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[42] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[41] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[40] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[39] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[38] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[37] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[36] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[35] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[34] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[33] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[32] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[15] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[14] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[13] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[12] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[11] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[10] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[9] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[8] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[7] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[6] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[5] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[4] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[3] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[2] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[1] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[0] in module xlslice_v1_0_3_xlslice__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[63] in module xlslice_v1_0_3_xlslice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[62] in module xlslice_v1_0_3_xlslice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[61] in module xlslice_v1_0_3_xlslice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Din[60] in module xlslice_v1_0_3_xlslice__parameterized0 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1485.855 ; gain = 555.824
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1487.277 ; gain = 557.473
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1485.855 ; gain = 555.824
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1487.277 ; gain = 557.473
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1485.855 ; gain = 555.824
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1487.277 ; gain = 557.473
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1485.855 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1487.277 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -145,8 +240,8 @@ Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_
 Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_0/mani_readout_axi_gpio_0_0/mani_readout_axi_gpio_0_0_in_context.xdc] for cell 'mani_readout_i/control'
 Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_1/mani_readout_axi_gpio_0_1/mani_readout_axi_gpio_0_1_in_context.xdc] for cell 'mani_readout_i/state'
 Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_1/mani_readout_axi_gpio_0_1/mani_readout_axi_gpio_0_1_in_context.xdc] for cell 'mani_readout_i/state'
-Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2_in_context.xdc] for cell 'mani_readout_i/data'
-Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2_in_context.xdc] for cell 'mani_readout_i/data'
+Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2_in_context.xdc] for cell 'mani_readout_i/data1'
+Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2/mani_readout_axi_gpio_0_2_in_context.xdc] for cell 'mani_readout_i/data1'
 Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_rst_ps7_0_100M_0/mani_readout_rst_ps7_0_100M_0/mani_readout_rst_ps7_0_100M_0_in_context.xdc] for cell 'mani_readout_i/rst_ps7_0_100M'
 Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_rst_ps7_0_100M_0/mani_readout_rst_ps7_0_100M_0/mani_readout_rst_ps7_0_100M_0_in_context.xdc] for cell 'mani_readout_i/rst_ps7_0_100M'
 Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_LTC2324_dummy_0_0/mani_readout_LTC2324_dummy_0_0/mani_readout_LTC2324_dummy_0_0_in_context.xdc] for cell 'mani_readout_i/LTC2324_dummy_0'
@@ -159,6 +254,12 @@ Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_
 Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xbar_1/mani_readout_xbar_1/mani_readout_xbar_1_in_context.xdc] for cell 'mani_readout_i/ps7_0_axi_periph/xbar'
 Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_auto_pc_0/mani_readout_auto_pc_0/mani_readout_auto_pc_0_in_context.xdc] for cell 'mani_readout_i/ps7_0_axi_periph/s00_couplers/auto_pc'
 Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_auto_pc_0/mani_readout_auto_pc_0/mani_readout_auto_pc_0_in_context.xdc] for cell 'mani_readout_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data1_0/mani_readout_data1_0/mani_readout_data1_0_in_context.xdc] for cell 'mani_readout_i/data2'
+Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data1_0/mani_readout_data1_0/mani_readout_data1_0_in_context.xdc] for cell 'mani_readout_i/data2'
+Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data2_0/mani_readout_data2_0/mani_readout_data1_0_in_context.xdc] for cell 'mani_readout_i/data3'
+Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data2_0/mani_readout_data2_0/mani_readout_data1_0_in_context.xdc] for cell 'mani_readout_i/data3'
+Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data3_0/mani_readout_data3_0/mani_readout_data1_0_in_context.xdc] for cell 'mani_readout_i/data4'
+Finished Parsing XDC File [g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_data3_0/mani_readout_data3_0/mani_readout_data1_0_in_context.xdc] for cell 'mani_readout_i/data4'
 Parsing XDC File [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/constrs_1/imports/Downloads/base.xdc]
 Finished Parsing XDC File [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/constrs_1/imports/Downloads/base.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/constrs_1/imports/Downloads/base.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mani_readout_wrapper_propImpl.xdc].
@@ -167,23 +268,23 @@ Parsing XDC File [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_
 Finished Parsing XDC File [G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1506.457 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1496.473 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the file specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.073 . Memory (MB): peak = 1506.457 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1496.473 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:25 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:24 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:25 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:24 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -453,7 +554,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/processing_system7
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/LTC2324_read_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/control. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/state. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/data. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/data1. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/rst_ps7_0_100M. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/LTC2324_dummy_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/dummy_ADC. (constraint file  auto generated constraint).
@@ -461,11 +562,18 @@ Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/timing. (constrain
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/ps7_0_axi_periph/xbar. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/ps7_0_axi_periph. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/data2. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/data3. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/data4. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/xlslice_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/xlslice_2. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/xlslice_3. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mani_readout_i/xlslice_4. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:26 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:25 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:27 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:26 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -487,38 +595,26 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port M00_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M00_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M01_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M01_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M02_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M02_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M03_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M03_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M04_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port M04_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S00_ACLK in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port S00_ARESETN in module mani_readout_ps7_0_axi_periph_1 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:29 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:28 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:34 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:35 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:34 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:35 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:35 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:35 . Memory (MB): peak = 1496.473 ; gain = 566.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -536,37 +632,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -582,11 +678,14 @@ Report BlackBoxes:
 |4     |mani_readout_LTC2324_read_0_0       |         1|
 |5     |mani_readout_axi_gpio_0_0           |         1|
 |6     |mani_readout_axi_gpio_0_2           |         1|
-|7     |mani_readout_axi_gpio_0_3           |         1|
-|8     |mani_readout_processing_system7_0_0 |         1|
-|9     |mani_readout_rst_ps7_0_100M_0       |         1|
-|10    |mani_readout_axi_gpio_0_1           |         1|
-|11    |mani_readout_axi_gpio_0_4           |         1|
+|7     |mani_readout_data1_0                |         1|
+|8     |mani_readout_data2_0                |         1|
+|9     |mani_readout_data3_0                |         1|
+|10    |mani_readout_axi_gpio_0_3           |         1|
+|11    |mani_readout_processing_system7_0_0 |         1|
+|12    |mani_readout_rst_ps7_0_100M_0       |         1|
+|13    |mani_readout_axi_gpio_0_1           |         1|
+|14    |mani_readout_axi_gpio_0_4           |         1|
 +------+------------------------------------+----------+
 
 Report Cell Usage: 
@@ -597,33 +696,36 @@ Report Cell Usage:
 |2     |mani_readout_LTC2324_read_0       |     1|
 |3     |mani_readout_auto_pc              |     1|
 |4     |mani_readout_axi_gpio_0           |     5|
-|9     |mani_readout_processing_system7_0 |     1|
-|10    |mani_readout_rst_ps7_0_100M       |     1|
-|11    |mani_readout_xbar                 |     1|
-|12    |IBUF                              |     5|
-|13    |OBUF                              |     4|
+|9     |mani_readout_data1                |     1|
+|10    |mani_readout_data2                |     1|
+|11    |mani_readout_data3                |     1|
+|12    |mani_readout_processing_system7_0 |     1|
+|13    |mani_readout_rst_ps7_0_100M       |     1|
+|14    |mani_readout_xbar                 |     1|
+|15    |IBUF                              |     5|
+|16    |OBUF                              |     4|
 +------+----------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 1498.531 ; gain = 568.727
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 13 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:29 . Memory (MB): peak = 1506.457 ; gain = 555.824
-Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 1506.457 ; gain = 576.426
+Synthesis finished with 0 errors, 0 critical warnings and 211 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:33 . Memory (MB): peak = 1498.531 ; gain = 559.531
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 1498.531 ; gain = 568.727
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1512.113 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1510.555 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1516.770 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1516.184 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the file specified.
-Synth Design complete | Checksum: 23619162
+Synth Design complete | Checksum: e644f976
 INFO: [Common 17-83] Releasing license: Synthesis
-62 Infos, 58 Warnings, 0 Critical Warnings and 0 Errors encountered.
+91 Infos, 112 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1516.770 ; gain = 1007.719
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1516.770 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:50 . Memory (MB): peak = 1516.184 ; gain = 1006.902
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1516.184 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.runs/synth_1/mani_readout_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file mani_readout_wrapper_utilization_synth.rpt -pb mani_readout_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr  9 13:20:14 2025...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 11 12:32:48 2025...

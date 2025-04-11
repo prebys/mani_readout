@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "mani_readout_xbar_1_synth_1" START { ROLLUP_AUTO }
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -90,7 +89,7 @@ set_property ip_output_repo {g:/My Drive/github/mani_readout/Xilinx/mani_readout
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/sources_1/bd/mani_readout/ip/mani_readout_xbar_1/mani_readout_xbar_1.xci}}
+read_ip -quiet {{G:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.srcs/sources_1/bd/mani_readout/ip/mani_readout_xbar_1/mani_readout_xbar_1.xci}}
 set_property used_in_implementation false [get_files -all {{g:/My Drive/github/mani_readout/Xilinx/mani_readout_test/mani_readout_test.gen/sources_1/bd/mani_readout/ip/mani_readout_xbar_1/mani_readout_xbar_1_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }
